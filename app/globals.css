@@ -1,0 +1,406 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 1.75rem;
+  --color-cream: #fff5e6;
+  --color-brown: #3b2416;
+  --color-yellow: #ffd44d;
+  --color-orange: #ff8a4a;
+  --color-teal: #46c4b8;
+  --color-berry: #f48fb1;
+  --color-sky: #d7efff;
+}
+
+@theme inline {
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-brown);
+  --color-primary: var(--color-orange);
+  --color-primary-foreground: #2b160c;
+  --color-secondary: var(--color-yellow);
+  --color-secondary-foreground: #2b160c;
+  --color-accent: var(--color-teal);
+  --color-accent-foreground: #0f3f39;
+  --color-muted: #f7e2c8;
+  --color-muted-foreground: #4a2f1d;
+  --color-card: #ffffff;
+  --color-card-foreground: var(--color-brown);
+  --color-border: #f1d9b8;
+  --color-input: #f8e7d1;
+  --color-ring: var(--color-orange);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.5rem);
+  --radius-2xl: calc(var(--radius) + 1rem);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-display);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 16s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .animate-marquee {
+    animation-duration: 12s;
+  }
+}
+
+.bg-cream {
+  background: var(--color-cream);
+}
+
+.bg-brown {
+  background: var(--color-brown);
+}
+
+.bg-sky {
+  background: var(--color-sky);
+}
+
+.bg-berry {
+  background: var(--color-berry);
+}
+
+.bg-orange {
+  background: var(--color-orange);
+}
+
+.bg-yellow {
+  background: var(--color-yellow);
+}
+
+.bg-teal {
+  background: var(--color-teal);
+}
+
+.text-brown {
+  color: var(--color-brown);
+}
+
+.display {
+  font-family: var(--font-display), "Baloo 2", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.shadow-soft {
+  box-shadow: 0 12px 40px rgba(59, 36, 22, 0.08);
+}
+
+.shadow-chip {
+  box-shadow: 0 8px 20px rgba(59, 36, 22, 0.12);
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 8s linear infinite;
+}
+
+/* Gallery fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Horizontal bounce animation for swipe indicator */
+@keyframes bounce-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+.animate-bounce-horizontal {
+  animation: bounce-horizontal 2s ease-in-out infinite;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+/* ============================================
+   HERO CAROUSEL ANIMATIONS & EFFECTS
+============================================ */
+
+/* Blob floating animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+/* Float animation for particles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Slow pulse for glow effect */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Animation delays */
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Background patterns */
+.hero-diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 35px,
+    rgba(139, 69, 19, 0.4) 35px,
+    rgba(139, 69, 19, 0.4) 70px
+  );
+}
+
+.hero-dot-pattern {
+  background-image: radial-gradient(circle, rgba(139, 69, 19, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Shine effect for button */
+.hero-shine-effect {
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s;
+}
+
+.group:hover .hero-shine-effect {
+  transform: translateX(100%);
+}
+
+
+/* Animation for POPUP OFFERS  */
+@layer utilities {
+  /* Fade in animation */
+  .animate-in {
+    animation-fill-mode: both;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .zoom-in-95 {
+    animation: zoomIn 0.4s ease-out;
+  }
+  
+  .duration-300 {
+    animation-duration: 300ms;
+  }
+  
+  .duration-400 {
+    animation-duration: 400ms;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* For hero section */
+body {
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+
+/* Responsive marquee animations */
+/* Remove old marquee-fast */
+
+/* New seamless marquee */
+@keyframes marquee-seamless {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee-seamless {
+  animation: marquee-seamless 25s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile faster */
+@media (max-width: 640px) {
+  .marquee-seamless {
+    animation-duration: 29s;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .marquee-seamless {
+    animation-duration: 20s;
+  }
+}
+
+/* Desktop slower */
+@media (min-width: 1025px) {
+  .marquee-seamless {
+    animation-duration: 30s;
+  }
+}
+
+/* =================================== */
+
+
+/* Logo scroll animation - Seamless loop */
+@keyframes logo-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.logo-scroll {
+  animation: logo-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile - Faster */
+@media (max-width: 640px) {
+  .logo-scroll {
+    animation-duration: 18s;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo-scroll {
+    animation-duration: 22s;
+  }
+}
+
+/* Desktop - Slower */
+@media (min-width: 1025px) {
+  .logo-scroll {
+    animation-duration: 30s;
+  }
+}
+
+/* ------------------------------
+   TIDIO CHAT REAL FIX
+-------------------------------- */
+
+/* Target the actual Tidio widget */
+#tidio-chat,
+#tidio-chat-iframe,
+iframe[src*="tidio.co"] {
+  bottom: 16px !important;
+  right: 6px !important;
+  z-index: 30 !important;
+  transition: bottom 0.25s ease;
+}
+
+/* Jab cart visible ho */
+body.cart-visible #tidio-chat,
+body.cart-visible #tidio-chat-iframe,
+body.cart-visible iframe[src*="tidio.co"] {
+  bottom: 75px !important; /* Cart ke upar */
+}
