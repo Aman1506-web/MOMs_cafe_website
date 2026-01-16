@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Baloo_2, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { CartBottomBar } from "@/components/cart-bottom-bar";
 import OfferPopup from "@/components/OfferPopup";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 const baloo = Baloo_2({
@@ -19,10 +19,16 @@ const inter = Inter({
   display: "swap",
 });
 
+const manbowLines = localFont({
+  src: "./fonts/ManbowLines.otf",
+  variable: "--font-manbow",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Bakehouse Café",
+  title: "MOMs Cafe | Ghar Jaisa Khana",
   description:
-    "Warm, playful café experience with fresh bakes, coffee, and colorful vibes.",
+    "Home-Style Veg & Non-Veg Tiffin Service in Delhi NCR | Weekly Menu & Monthly Plans Available",
 };
 
 export default function RootLayout({
@@ -33,15 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${baloo.variable} ${inter.variable} bg-cream text-brown antialiased`}
+        className={`${baloo.variable} ${inter.variable} ${manbowLines.variable} bg-cream text-black antialiased`}
       >
         {children}
         <Analytics />
-        <OfferPopup /> 
-        <Script
-          src="//code.tidio.co/ych9pywstrdywc6o1la5xbnyzj1j9mrz.js"
-          strategy="afterInteractive"
-        />
+        <OfferPopup />
         <CartBottomBar />
       </body>
     </html>

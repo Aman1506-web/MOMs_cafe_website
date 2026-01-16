@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 //           </p>
 //           <div className="flex flex-wrap gap-3">
 //             <Link href="/reserve">
-//               <Button className="rounded-full bg-yellow text-brown shadow-chip hover:bg-yellow/90">
+//               <Button className="rounded-full bg-yellow text-black shadow-chip hover:bg-yellow/90">
 //                 Reserve Table
 //               </Button>
 //             </Link>
@@ -67,13 +67,13 @@ export function FeaturedBakes() {
   return (
     <SectionWrapper className="mt-10 space-y-4">
       <div className="flex flex-col gap-2">
-        <p className="display text-sm font-semibold text-brown/70">
+        <p className="display text-sm font-semibold text-black/70">
           Product we bake here daily
         </p>
-        <h2 className="display text-3xl font-extrabold text-brown sm:text-4xl">
+        <h2 className="display text-3xl font-extrabold text-black sm:text-4xl">
           Fresh batches, morning to evening.
         </h2>
-        <p className="max-w-2xl text-brown/70">
+        <p className="max-w-2xl text-black/70">
           Choose from sourdough loaves, pretzels, cookies, and special cruffins.
         </p>
       </div>
@@ -97,7 +97,7 @@ export function FeaturedBakes() {
                 className="rounded-[18px] object-cover"
               />
             </div>
-            <p className="mt-3 display text-xl font-extrabold text-brown">
+            <p className="mt-3 display text-xl font-extrabold text-black">
               {item.title}
             </p>
           </div>
@@ -119,10 +119,10 @@ export function CravingPills() {
     <SectionWrapper className="mt-6">
       <div className="flex flex-col gap-3 rounded-[24px] bg-white p-5 shadow-soft md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="display text-xl font-extrabold text-brown">
+          <p className="display text-xl font-extrabold text-black">
             What are you craving today?
           </p>
-          <p className="text-brown/70">
+          <p className="text-black/70">
             Jump straight to a category and build your order.
           </p>
         </div>
@@ -131,7 +131,7 @@ export function CravingPills() {
             <Link
               key={pill.label}
               href={pill.href}
-              className="rounded-full bg-amber-100 px-4 py-2 text-sm font-semibold text-brown shadow-chip hover:bg-yellow"
+              className="rounded-full bg-amber-100 px-4 py-2 text-sm font-semibold text-black shadow-chip hover:bg-yellow"
             >
               {pill.label}
             </Link>
@@ -153,7 +153,7 @@ export function StaffSection() {
             fill
             className="object-cover"
           />
-          <div className="absolute left-4 top-4 rounded-full bg-yellow px-3 py-1 text-xs font-bold text-brown shadow-chip">
+          <div className="absolute left-4 top-4 rounded-full bg-yellow px-3 py-1 text-xs font-bold text-black shadow-chip">
             COMBO
           </div>
         </div>
@@ -169,7 +169,7 @@ export function StaffSection() {
             “Baking is a craft in itself, and we love these delicate flavors.” —
             Ashton Cooper, Head Baker
           </p>
-          <Button className="w-fit rounded-full bg-yellow text-brown shadow-chip hover:bg-yellow/90">
+          <Button className="w-fit rounded-full bg-yellow text-black shadow-chip hover:bg-yellow/90">
             Meet the team
           </Button>
         </div>
@@ -227,17 +227,17 @@ export function ReviewsSection() {
       <div className="rounded-[26px] bg-sky p-6 shadow-soft">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="display text-2xl font-extrabold text-brown">
+            <p className="display text-2xl font-extrabold text-black">
               “With enough butter, anything is good!”
             </p>
-            <p className="text-brown/70">
+            <p className="text-black/70">
               Our guests say the same after the first bite of our chunky
               cookies.
             </p>
           </div>
-          <div className="rounded-full bg-white px-4 py-2 text-brown shadow-chip">
+          <div className="rounded-full bg-white px-4 py-2 text-black shadow-chip">
             <span className="display text-xl font-extrabold">4.7</span>
-            <span className="ml-2 text-sm text-brown/70">
+            <span className="ml-2 text-sm text-black/70">
               Based on 350+ reviews
             </span>
           </div>
@@ -247,7 +247,7 @@ export function ReviewsSection() {
             (pill) => (
               <span
                 key={pill}
-                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-brown shadow-chip"
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-chip"
               >
                 {pill}
               </span>
@@ -261,36 +261,140 @@ export function ReviewsSection() {
 
 export function VisitSection() {
   return (
-    <SectionWrapper className="mt-10 mb-16">
-      <div className="grid gap-6 rounded-[26px] bg-white p-6 shadow-soft md:grid-cols-[1fr_0.9fr]">
-        <div className="space-y-3">
-          <p className="display text-2xl font-extrabold text-brown">Visit us</p>
-          <p className="text-brown/80">
-            Bakehouse Café, 21st Street, Jubilee Hills, Hyderabad
+    <SectionWrapper className="mt-10 mb-16 px-4 sm:px-6">
+      <div
+        className="relative overflow-hidden rounded-3xl p-5 sm:p-8 md:p-10 lg:p-12 shadow-soft border-2"
+        style={{ background: "#eda6c4", borderColor: "rgba(137,207,240,0.5)" }}
+      >
+        {/* Decorative elements */}
+        <div className="absolute -right-20 -top-20 h-40 w-40 sm:h-64 sm:w-64 rounded-full opacity-40" style={{ background: "#fdffce", filter: "blur(60px)" }} />
+        <div className="absolute -bottom-20 -left-20 h-40 w-40 sm:h-64 sm:w-64 rounded-full opacity-40" style={{ background: "#89cff0", filter: "blur(60px)" }} />
+
+        {/* Header */}
+        <div className="relative mb-6 sm:mb-8 md:mb-10 text-center">
+          <p className="display mb-2 text-xs sm:text-sm font-semibold uppercase tracking-widest" style={{ color: "#3b2416" }}>
+            Come Say Hello
           </p>
-          <p className="text-brown/70">Open daily: 8:00 AM – 11:00 PM</p>
-          <p className="text-brown/70">Phone: +91 88888 88888</p>
-          <div className="flex gap-2">
-            {socialLinks.map((social) => (
-              <span
-                key={social.name}
-                aria-label={social.name}
-                className="flex items-center justify-center rounded-full bg-amber-100 p-2 text-brown shadow-chip"
-              >
-                <SocialIcon name={social.icon} />
-              </span>
-            ))}
+          <h2 className="display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold" style={{ color: "#3b2416" }}>
+            Visit Our Cafe
+          </h2>
+          <div className="mx-auto mt-3 sm:mt-4 h-1 w-12 sm:w-16 rounded-full" style={{ background: "linear-gradient(to right, #fdffce, #89cff0)" }} />
+        </div>
+
+        <div className="relative grid gap-6 md:grid-cols-2 lg:gap-10">
+          {/* Left: Info Cards */}
+          <div className="space-y-4 sm:space-y-5">
+            {/* Address Card */}
+            <div className="rounded-2xl p-4 sm:p-5 transition-all shadow-sm" style={{ background: "#fdffce" }}>
+              <div className="mb-2 sm:mb-3 flex items-center gap-3">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full" style={{ background: "#89cff0" }}>
+                  <svg className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: "#3b2416" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <p className="display text-base sm:text-lg font-bold" style={{ color: "#3b2416" }}>Location</p>
+              </div>
+              <p className="text-sm sm:text-base leading-relaxed pl-12 sm:pl-13" style={{ color: "#3b2416" }}>
+                89 Bara Bazar Marg<br />
+                Old Rajinder Nagar, New Delhi
+              </p>
+            </div>
+
+            {/* Hours Card */}
+            <div className="rounded-2xl p-4 sm:p-5 transition-all shadow-sm" style={{ background: "#fdffce" }}>
+              <div className="mb-2 sm:mb-3 flex items-center gap-3">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full" style={{ background: "#89cff0" }}>
+                  <svg className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: "#3b2416" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p className="display text-base sm:text-lg font-bold" style={{ color: "#3b2416" }}>Hours</p>
+              </div>
+              <div className="space-y-1 text-sm sm:text-base" style={{ color: "#3b2416" }}>
+                <p className="flex justify-between gap-4">
+                  <span>Mon - Fri</span>
+                  <span className="font-semibold">8:00 AM - 10:00 PM</span>
+                </p>
+                <p className="flex justify-between gap-4">
+                  <span>Sat - Sun</span>
+                  <span className="font-semibold">9:00 AM - 11:00 PM</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Contact Card */}
+            <div className="rounded-2xl p-4 sm:p-5 transition-all shadow-sm" style={{ background: "#fdffce" }}>
+              <div className="mb-2 sm:mb-3 flex items-center gap-3">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full" style={{ background: "#89cff0" }}>
+                  <svg className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: "#3b2416" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <p className="display text-base sm:text-lg font-bold" style={{ color: "#3b2416" }}>Contact</p>
+              </div>
+              <div className="text-sm sm:text-base pl-12 sm:pl-13 space-y-0.5" style={{ color: "#3b2416" }}>
+                <p>+91 98765 43210</p>
+                <p>hello@momscafe.in</p>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-3 pt-1">
+              <p className="text-xs sm:text-sm font-medium" style={{ color: "#3b2416" }}>Follow us:</p>
+              <div className="flex gap-2">
+                {socialLinks.map((social) => (
+                  <span
+                    key={social.name}
+                    aria-label={social.name}
+                    className="flex h-9 w-9 sm:h-10 sm:w-10 cursor-pointer items-center justify-center rounded-full transition-all hover:scale-110"
+                    style={{ background: "#89cff0", color: "#3b2416" }}
+                  >
+                    <SocialIcon name={social.icon} />
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Map */}
+          <div className="relative mt-2 md:mt-0">
+            <div className="absolute -inset-1 rounded-2xl opacity-60" style={{ background: "linear-gradient(to right, #fdffce, #89cff0)", filter: "blur(8px)" }} />
+            <div className="relative h-64 sm:h-72 md:h-full md:min-h-[300px] overflow-hidden rounded-2xl p-1.5" style={{ background: "#fdffce" }}>
+              <iframe
+                title="Mom's Cafe Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.8!2d77.1823!3d28.6423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d029c2bad7577%3A0x6b7f7a8b8a8b8a8b!2sOld%20Rajinder%20Nagar%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000"
+                className="h-full w-full rounded-xl border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
-        <div className="h-52 rounded-2xl bg-amber-100/70 p-3 shadow-inner">
-          <iframe
-            title="BakeHouse Café location"
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3499.6013313506764!2d77.30448207572228!3d28.7015699756272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDQyJzA1LjciTiA3N8KwMTgnMjUuNCJF!5e0!3m2!1sen!2sin!4v1765171027755!5m2!1sen!2sin"
-            className="h-full w-full rounded-xl border-0"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+
+        {/* Bottom CTA */}
+        <div className="relative mt-6 sm:mt-8 md:mt-10 flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl p-4 sm:p-6 text-center sm:flex-row sm:text-left" style={{ background: "#fdffce" }}>
+          <div className="flex-1">
+            <p className="display text-lg sm:text-xl font-bold" style={{ color: "#3b2416" }}>
+              Ready to taste the love?
+            </p>
+            <p className="text-sm sm:text-base" style={{ color: "#3b2416", opacity: 0.8 }}>
+              Reserve your table or order online
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+            <Link href="/reserve" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto rounded-full px-5 sm:px-6 py-2.5 sm:py-3 font-bold shadow-chip transition-all hover:opacity-90" style={{ background: "#89cff0", color: "#3b2416" }}>
+                Reserve Table
+              </Button>
+            </Link>
+            <Link href="/menu" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto rounded-full border-2 bg-transparent px-5 sm:px-6 py-2.5 sm:py-3 font-bold transition-all hover:opacity-80" style={{ borderColor: "#3b2416", color: "#3b2416" }}>
+                View Menu
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </SectionWrapper>

@@ -48,7 +48,7 @@ export default function CafeGallery() {
 
       {/* Section Header */}
       <div className="text-center mb-8 lg:mb-16">
-        <div className="inline-flex items-center gap-2 bg-yellow-400 text-brown px-6 py-2 rounded-full mb-6 shadow-lg">
+        <div className="inline-flex items-center gap-2 bg-yellow-400 text-black px-6 py-2 rounded-full mb-6 shadow-lg">
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
             <path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -82,8 +82,8 @@ export default function CafeGallery() {
                 rounded-full font-bold text-sm lg:text-lg
                 border-2 transition-all duration-300
                 ${activeCategory === cat.id
-                  ? "bg-yellow-400 text-brown border-brown/70 shadow-lg scale-105"
-                  : "bg-white text-brown/70 border-brown/30 hover:border-brown/50 hover:scale-105"
+                  ? "bg-yellow-400 text-black border-brown/70 shadow-lg scale-105"
+                  : "bg-white text-black/70 border-brown/30 hover:border-brown/50 hover:scale-105"
                 }
               `}
             >
@@ -117,7 +117,7 @@ export default function CafeGallery() {
                 {/* Gradient Overlay - Always visible on mobile for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="inline-block px-3 py-1 bg-yellow-400 text-brown text-xs font-bold rounded-full mb-3 uppercase">
+                    <div className="inline-block px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full mb-3 uppercase">
                       {image.category}
                     </div>
                     <h3 className="text-white font-bold text-2xl mb-2">
@@ -193,7 +193,7 @@ export default function CafeGallery() {
               {/* Overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="inline-block px-3 py-1 bg-yellow-400 text-brown text-xs font-bold rounded-full mb-2 uppercase">
+                  <div className="inline-block px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full mb-2 uppercase">
                     {image.category}
                   </div>
                   <h3 className="text-white font-bold text-2xl">
@@ -211,7 +211,7 @@ export default function CafeGallery() {
 
       {/* CTA Button */}
       <div className="text-center mt-12 lg:mt-20">
-        <button className="group relative overflow-hidden rounded-full border-2 border-brown/70 bg-yellow-400 px-8 py-4 text-brown shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
+        <button className="group relative overflow-hidden rounded-full border-2 border-brown/70 bg-yellow-400 px-8 py-4 text-black shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
           <span className="relative z-10 display text-lg lg:text-xl font-extrabold uppercase tracking-wide inline-flex items-center gap-2">
             View Full Gallery
             <svg className="w-6 h-6 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

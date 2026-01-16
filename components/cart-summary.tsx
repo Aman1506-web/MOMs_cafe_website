@@ -65,7 +65,7 @@ export function CartSummary({ className }: { className?: string }) {
           <div className="flex items-center gap-2">
             <Button
               variant="secondary"
-              className="rounded-full bg-yellow text-brown hover:bg-yellow/90"
+              className="rounded-full bg-yellow text-black hover:bg-yellow/90"
               onClick={() => setOpen(true)}
               disabled={items.length === 0}
             >
@@ -90,8 +90,8 @@ export function CartSummary({ className }: { className?: string }) {
                 className="flex flex-col gap-3 rounded-xl bg-amber-50 px-3 py-2 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="w-full">
-                  <p className="font-semibold text-brown">{item.name}</p>
-                  <p className="text-xs text-brown/60">
+                  <p className="font-semibold text-black">{item.name}</p>
+                  <p className="text-xs text-black/60">
                     ₹{item.price} • {item.category}
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export function CartSummary({ className }: { className?: string }) {
                     >
                       -
                     </button>
-                    <span className="min-w-[20px] text-center text-sm font-semibold text-brown">
+                    <span className="min-w-[20px] text-center text-sm font-semibold text-black">
                       {item.quantity}
                     </span>
                     <button
@@ -115,11 +115,11 @@ export function CartSummary({ className }: { className?: string }) {
                       +
                     </button>
                   </div>
-                  <div className="text-sm font-semibold text-brown">
+                  <div className="text-sm font-semibold text-black">
                     ₹{item.price * item.quantity}
                   </div>
                   <button
-                    className="text-brown/50 hover:text-brown"
+                    className="text-black/50 hover:text-black"
                     aria-label="Remove item"
                     onClick={() => removeItem(item.id)}
                   >
@@ -128,7 +128,7 @@ export function CartSummary({ className }: { className?: string }) {
                 </div>
               </div>
             ))}
-            <div className="flex items-center justify-between rounded-xl bg-amber-100 px-3 py-2 font-semibold text-brown">
+            <div className="flex items-center justify-between rounded-xl bg-amber-100 px-3 py-2 font-semibold text-black">
               <span>Total</span>
               <span>₹{total}</span>
             </div>
@@ -139,7 +139,7 @@ export function CartSummary({ className }: { className?: string }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="rounded-3xl border-none bg-white p-6 shadow-soft">
           <DialogHeader>
-            <DialogTitle className="display text-2xl text-brown">
+            <DialogTitle className="display text-2xl text-black">
               Send order on WhatsApp
             </DialogTitle>
           </DialogHeader>
@@ -181,7 +181,7 @@ export function CartSummary({ className }: { className?: string }) {
                       "rounded-full px-4 py-2 text-sm font-semibold shadow-chip",
                       mode === opt
                         ? "bg-brown text-amber-100"
-                        : "bg-amber-50 text-brown hover:bg-amber-100"
+                        : "bg-amber-50 text-black hover:bg-amber-100"
                     )}
                     onClick={() => setMode(opt)}
                   >
@@ -191,7 +191,7 @@ export function CartSummary({ className }: { className?: string }) {
               </div>
             </div>
             <Button
-              className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+              className="w-full rounded-full bg-orange text-black shadow-chip hover:bg-orange/90"
               onClick={handleSend}
               disabled={!name || !phone || items.length === 0}
             >

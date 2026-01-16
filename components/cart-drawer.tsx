@@ -139,7 +139,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
         <SheetTrigger asChild>
           <button
             className={cn(
-              "flex items-center gap-2 rounded-full border border-brown/15 bg-white px-4 py-2 text-sm font-semibold text-brown shadow-chip transition hover:-translate-y-0.5 hover:shadow-soft",
+              "flex items-center gap-2 rounded-full border border-brown/15 bg-white px-4 py-2 text-sm font-semibold text-black shadow-chip transition hover:-translate-y-0.5 hover:shadow-soft",
               triggerClassName
             )}
             aria-label="Open cart"
@@ -155,41 +155,41 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
           </button>
         </SheetTrigger>
         <SheetContent className="w-full max-w-md bg-white p-0 shadow-soft">
-          <SheetHeader className="border-b border-amber-100 px-5 py-4">
-            <SheetTitle className="display text-xl text-brown">My Cart</SheetTitle>
+          <SheetHeader className="border-b border-pink/30 px-5 py-4">
+            <SheetTitle className="display text-xl text-black">My Cart</SheetTitle>
           </SheetHeader>
 
           {items.length === 0 ? (
-            <div className="p-5 text-sm text-brown/70">Your cart is empty.</div>
+            <div className="p-5 text-sm text-black/70">Your cart is empty.</div>
           ) : (
             <div className="flex h-full flex-col justify-between gap-4 p-5">
               <div className="space-y-3 overflow-auto">
                 {items.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-xl bg-amber-50 p-3 shadow-soft"
+                    className="rounded-xl bg-pink/10 p-3 shadow-soft"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <p className="font-semibold text-brown">{item.name}</p>
-                        <p className="text-xs text-brown/60">
+                        <p className="font-semibold text-black">{item.name}</p>
+                        <p className="text-xs text-black/60">
                           ₹{item.price} • {item.category}
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-2 rounded-full bg-white px-2 py-1 shadow-chip">
                           <button
-                            className="grid h-7 w-7 place-items-center rounded-full bg-brown text-amber-100"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-pink text-black"
                             onClick={() => decreaseQty(item.id)}
                             aria-label="Decrease quantity"
                           >
                             <Minus className="size-3" />
                           </button>
-                          <span className="min-w-[20px] text-center text-sm font-semibold text-brown">
+                          <span className="min-w-5 text-center text-sm font-semibold text-black">
                             {item.quantity}
                           </span>
                           <button
-                            className="grid h-7 w-7 place-items-center rounded-full bg-brown text-amber-100"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-pink text-black"
                             onClick={() => increaseQty(item.id)}
                             aria-label="Increase quantity"
                           >
@@ -197,7 +197,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                           </button>
                         </div>
                         <button
-                          className="text-brown/50 hover:text-brown"
+                          className="text-black/50 hover:text-black"
                           aria-label="Remove item"
                           onClick={() => removeItem(item.id)}
                         >
@@ -205,12 +205,12 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                         </button>
                       </div>
                     </div>
-                    <div className="mt-2 text-sm font-semibold text-brown">
+                    <div className="mt-2 text-sm font-semibold text-black">
                       ₹{item.price * item.quantity}
                     </div>
                   </div>
                 ))}
-                <div className="flex items-center justify-between rounded-xl bg-amber-100 px-3 py-2 font-semibold text-brown">
+                <div className="flex items-center justify-between rounded-xl bg-pink/30 px-3 py-2 font-semibold text-black">
                   <span>Total</span>
                   <span>₹{total}</span>
                 </div>
@@ -218,7 +218,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
 
               <div className="space-y-3">
                 <button
-                  className="w-full rounded-full bg-yellow px-4 py-3 text-center font-semibold text-brown shadow-chip hover:bg-yellow/90"
+                  className="w-full rounded-full bg-pink px-4 py-3 text-center font-semibold text-black shadow-chip hover:bg-pink/90"
                   onClick={() => setWhOpen(true)}
                 >
                   <span className="inline-flex items-center gap-2">
@@ -226,7 +226,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                   </span>
                 </button>
                 <button
-                  className="w-full text-sm text-brown/60 hover:text-brown"
+                  className="w-full text-sm text-black/60 hover:text-black"
                   onClick={clearCart}
                 >
                   Clear cart
@@ -240,7 +240,7 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
       <Dialog open={whOpen} onOpenChange={setWhOpen}>
         <DialogContent className="rounded-3xl border-none bg-white p-6 shadow-soft">
           <DialogHeader>
-            <DialogTitle className="display text-2xl text-brown">
+            <DialogTitle className="display text-2xl text-black">
               Send order on WhatsApp
             </DialogTitle>
           </DialogHeader>
@@ -290,8 +290,8 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                     className={cn(
                       "rounded-full px-4 py-2 text-sm font-semibold shadow-chip",
                       mode === opt
-                        ? "bg-brown text-amber-100"
-                        : "bg-amber-50 text-brown hover:bg-amber-100"
+                        ? "bg-pink text-black"
+                        : "bg-pink/20 text-black hover:bg-pink/40"
                     )}
                     onClick={() => setMode(opt)}
                   >
@@ -309,8 +309,8 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                   className={cn(
                     "flex w-full items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-chip",
                     locationLoading
-                      ? "bg-amber-100 text-brown/50"
-                      : "bg-amber-50 text-brown hover:bg-amber-100"
+                      ? "bg-sky-blue/50 text-black/50"
+                      : "bg-sky-blue/30 text-black hover:bg-sky-blue/50"
                   )}
                   onClick={requestLocation}
                   disabled={locationLoading}
@@ -336,12 +336,12 @@ export function CartDrawer({ triggerContent, triggerClassName }: CartDrawerProps
                 <p className="text-xs font-medium text-red-600">{locationError}</p>
               ) : null}
               {!location && !locationLoading && (
-                <p className="text-xs text-brown/60">Location is required to place order</p>
+                <p className="text-xs text-black/60">Location is required to place order</p>
               )}
             </div>
 
             <Button
-              className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90 disabled:opacity-50"
+              className="w-full rounded-full bg-pink text-black shadow-chip hover:bg-pink/90 disabled:opacity-50"
               onClick={handleSend}
               disabled={!name || !phone || items.length === 0 || !location}
             >
