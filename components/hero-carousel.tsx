@@ -9,7 +9,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroCarousel() {
@@ -19,298 +18,285 @@ export default function HeroCarousel() {
   const descRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLDivElement>(null);
-  const coffeeRef = useRef<HTMLImageElement>(null);
   const sketchRef = useRef<HTMLImageElement>(null);
 
   useGSAP(
-  () => {
-    // Timeline for initial load animations
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // 1. Heading animation - Split lines fade in from bottom
-    tl.from(
-      headingRef.current?.children || [],
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        clearProps: "all", // ← Clear inline styles after animation
-      },
-      0.3
-    );
-
-    // 2. Description fade in
-    tl.from(
-      descRef.current,
-      {
-        y: 50,
+      tl.from(headingRef.current?.children || [], {
+        y: 60,
         opacity: 0,
         duration: 0.8,
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.8
-    );
+        stagger: 0.12,
+        clearProps: "all",
+      });
 
-    // 3. Buttons slide in - FIX HERE
-    tl.fromTo(
-      buttonsRef.current?.children || [],
-      {
-        x: -50,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1, // ← Explicitly set final opacity
-        duration: 0.6,
-        stagger: 0.15,
-        clearProps: "all", // ← Clear inline styles after animation
-      },
-      1
-    );
+      tl.from(
+        descRef.current,
+        {
+          y: 25,
+          opacity: 0,
+          duration: 0.6,
+          clearProps: "all",
+        },
+        0.4
+      );
 
-    // 4. Burger image - Scale up with rotation
-    tl.from(
-      burgerRef.current,
-      {
-        scale: 0.8,
-        opacity: 0,
-        rotation: -10,
-        duration: 1.2,
-        ease: "back.out(1.7)",
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.5
-    );
+      tl.fromTo(
+        buttonsRef.current?.children || [],
+        { x: -25, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.1,
+          clearProps: "all",
+        },
+        0.6
+      );
 
-    // 5. Coffee cup - Slide in from left with rotation
-    tl.from(
-      coffeeRef.current,
-      {
-        x: -200,
-        opacity: 0,
-        rotation: -30,
-        duration: 1,
-        ease: "power2.out",
-        clearProps: "all", // ← Clear inline styles
-      },
-      0.6
-    );
-
-    // ScrollTrigger animations for parallax effects
-    gsap.to(burgerRef.current, {
-      y: -50,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-
-    gsap.to(coffeeRef.current, {
-      y: 30,
-      rotation: -15,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 2,
-      },
-    });
-  },
-  { scope: sectionRef }
-);
+      tl.from(
+        burgerRef.current,
+        {
+          scale: 0.92,
+          opacity: 0,
+          duration: 0.9,
+          clearProps: "all",
+        },
+        0.35
+      );
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
       ref={sectionRef}
       className="
         relative
-        grid
-        grid-cols-1
-        items-center
-        gap-1 sm:gap-6 lg:gap-10
+        grid grid-cols-1 lg:grid-cols-2
+        items-start lg:items-center
+        gap-4 lg:gap-10
         px-4 sm:px-6 lg:px-12
-        pt-8 sm:pt-12 lg:pt-0
-        lg:grid-cols-2
-        min-h-[85vh]
+        pt-24 sm:pt-28 lg:pt-24
+        min-h-[auto] lg:min-h-[85vh]
       "
+      style={{
+        backgroundImage: "url('/images/hero-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      {/* ================= Decorative Cafe Sketch (Right) ================= */}
+      {/* Decorative Sketch */}
       <img
         ref={sketchRef}
         src="/decor/cafe-sketch.png"
         alt=""
         className="
-          pointer-events-none
-          select-none
-          absolute
-          z-0
-
-          /* ---------- Mobile (background texture) ---------- */
-          right-[-120px]
-          top-[47%]
-          -translate-y-1/3
-          w-[520px]
-          opacity-[0.20]
-
-          /* ---------- Desktop (hero decoration) ---------- */
-          lg:blur-0
-          lg:opacity-[0.2]
-          lg:w-[800px]
-          lg:top-[10%]
-          lg:right-[-220px]
-          lg:left-auto
-          lg:-translate-x-0
+          pointer-events-none select-none absolute z-0
+          right-[-120px] top-[50%] -translate-y-1/3
+          w-[440px] opacity-[0.1]
+          lg:w-[800px] lg:top-[10%] lg:right-[-220px]
         "
       />
 
-      {/* ================= Coffee Cup (Left Side) ================= */}
-      <img
-        ref={coffeeRef}
-        src="/decor/coffee-cup.png"
-        alt=""
-        className="
-          pointer-events-none
-          select-none
-          absolute
-          z-0
-
-          /* ---------- Mobile ---------- */
-          left-[-60px]
-          top-[15%]
-          w-[180px]
-          opacity-[0.20]
-          rotate-[-12deg]
-
-          /* ---------- Tablet ---------- */
-          sm:left-[-40px]
-          sm:top-[12%]
-          sm:w-[220px]
-          sm:opacity-[0.18]
-
-          /* ---------- Desktop ---------- */
-          lg:left-[-5px]
-          lg:top-[5%]
-          lg:w-[280px]
-          lg:opacity-[0.25]
-          lg:rotate-[-8deg]
-          lg:drop-shadow-2xl
-
-          /* ---------- Hover effect (desktop only) ---------- */
-          lg:transition-transform
-          lg:duration-700
-          lg:hover:scale-105
-          lg:hover:rotate-[-5deg]
-        "
-      />
-
-      {/* ================= TEXT CONTENT ================= */}
+      {/* TEXT CONTENT */}
       <div
         className="
-          relative
-          z-10
+          relative z-10
           flex flex-col
           items-center text-center
-          gap-3 sm:gap-4 lg:gap-0
           lg:items-start lg:text-left
-          pl-0 lg:pl-12
+          gap-2 sm:gap-3
+          lg:pl-12
         "
       >
+        {/* Tagline badge */}
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-orange-200 shadow-sm">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500"></span>
+          </span>
+          <span className="text-[9px] sm:text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Fresh meals delivered daily</span>
+        </span>
+
         <h1
           ref={headingRef}
-          className="display text-4xl sm:text-5xl lg:text-8xl font-bold"
+          className="display font-bold leading-[1.1] text-2xl sm:text-5xl lg:text-7xl"
         >
-          <span className="inline-block">Everything</span>
-          <br />
-          <span className="inline-block">is better</span>
-          <br />
           <span className="inline-block">
-            with a&nbsp;
-            <span className="text-blue-300 display">Biryani</span>
+            <span className="relative">
+              Ghar
+              <svg className="absolute -bottom-1 left-0 w-full h-1.5 sm:h-2 text-orange-400/60" viewBox="0 0 100 12" preserveAspectRatio="none">
+                <path d="M0,8 Q25,0 50,8 T100,8" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+              </svg>
+            </span>
+            {" "}Jaisa Khana
+          </span>
+          <br />
+          <span className="inline-block mt-1 sm:mt-2">
+            Rozana{" "}
+            <span className="text-orange-500">Lunch & Dinner</span>
           </span>
         </h1>
 
         <p
           ref={descRef}
-          className="display text-gray-500 text-base sm:text-lg lg:text-2xl max-w-xs sm:max-w-md lg:max-w-2xl"
+          className="display text-gray-600 text-xs sm:text-lg lg:text-xl max-w-xs sm:max-w-md lg:max-w-lg leading-relaxed"
         >
-          Burger is the missing piece that makes every day complete, a simple yet
-          delicious joy in life
+          Homestyle cooking that reminds you of mom&apos;s kitchen.
+          <span className="hidden sm:inline"> No preservatives, just pure love on a plate.</span>
         </p>
+
+        {/* Veg / Non-Veg pricing cards */}
+        <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 lg:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 px-2.5 py-1.5 sm:px-4 sm:py-2.5 lg:px-5 lg:py-3 rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-sm border border-green-200 shadow-sm">
+            <span className="flex items-center justify-center w-4 h-4 sm:w-6 sm:h-6 lg:w-7 lg:h-7 rounded border-2 border-green-600 bg-white">
+              <span className="w-2 h-2 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-green-600"></span>
+            </span>
+            <div className="flex flex-col">
+              <span className="text-[9px] sm:text-xs lg:text-sm font-medium text-gray-500 uppercase">Pure Veg</span>
+              <span className="text-xs sm:text-base lg:text-lg font-bold text-gray-800">₹80<span className="text-[10px] sm:text-xs lg:text-sm font-normal text-gray-500">/meal</span></span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 px-2.5 py-1.5 sm:px-4 sm:py-2.5 lg:px-5 lg:py-3 rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-sm border border-red-200 shadow-sm">
+            <span className="flex items-center justify-center w-4 h-4 sm:w-6 sm:h-6 lg:w-7 lg:h-7 rounded border-2 border-red-600 bg-white">
+              <span className="w-2 h-2 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 rounded-full bg-red-600"></span>
+            </span>
+            <div className="flex flex-col">
+              <span className="text-[9px] sm:text-xs lg:text-sm font-medium text-gray-500 uppercase">Non-Veg</span>
+              <span className="text-xs sm:text-base lg:text-lg font-bold text-gray-800">₹90<span className="text-[10px] sm:text-xs lg:text-sm font-normal text-gray-500">/meal</span></span>
+            </div>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1 text-[10px] sm:text-xs text-gray-600">
+          <span className="flex items-center gap-1">
+            <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Weekly Menu
+          </span>
+          <span className="flex items-center gap-1">
+            <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Lunch & Dinner
+          </span>
+          <span className="flex items-center gap-1">
+            <svg className="w-3.5 h-3.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Monthly Plans
+          </span>
+        </div>
 
         <div
           ref={buttonsRef}
-          className="mt-3 sm:mt-5 flex flex-col items-center sm:flex-row sm:items-start gap-4"
+          className="mt-3 sm:mt-5 flex flex-col sm:flex-row gap-2.5 items-center sm:items-start"
         >
           <Button
             className="
-              relative overflow-hidden
+              group relative overflow-hidden
               rounded-full
-              border border-brown/70
-              bg-blue-300
-              px-5 py-2 sm:px-6 sm:py-3.5
-              text-black
-              shadow-soft
-              transition
-              hover:-translate-y-0.5 hover:shadow-lg
+              bg-orange-500
+              text-white
+              font-bold
+              px-5 py-2.5 sm:px-7 sm:py-3
+              shadow-lg shadow-orange-500/30
+              transition-all duration-300
+              hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/40 hover:bg-orange-600
             "
-            onClick={() => router.push("/menu?category=biryani")}
+            onClick={() => router.push("/menu")}
           >
-            <span className="display text-lg sm:text-xl font-extrabold uppercase tracking-wide">
-              Order Now
+            <span className="display text-xs sm:text-base font-extrabold uppercase tracking-wide">
+              View This Week&apos;s Menu
             </span>
-            <ChevronRight strokeWidth={3} className="ml-1 h-5 w-5 sm:h-6 sm:w-6" />
-            <span className="pointer-events-none absolute inset-0 rounded-full border border-brown/70 opacity-80" />
+            <ChevronRight strokeWidth={3} className="ml-1 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
           </Button>
 
           <Button
             className="
-              flex items-center gap-1
-              py-1 sm:py-2
-              text-lg sm:text-xl
+              group flex items-center gap-1.5
+              text-xs sm:text-base
               text-gray-700
               display font-semibold
-              bg-transparent
-              hover:bg-transparent
-              cursor-pointer
-              hover:underline underline-offset-4
+              bg-white/80 backdrop-blur-sm
+              border border-gray-200
+              rounded-full
+              px-4 py-2 sm:px-5 sm:py-2.5
+              hover:bg-white hover:border-gray-300
+              transition-all duration-300
             "
-            onClick={() => router.push("/menu")}
+            onClick={() => router.push("/subscribe")}
           >
-            Learn More
-            <ChevronRight />
+            Subscribe Monthly
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>
 
-      {/* ================= IMAGE CONTENT ================= */}
+      {/* IMAGE CONTENT */}
       <div
         ref={burgerRef}
         className="
           relative
           w-full
-          h-[360px]
-          sm:h-[480px]
-          md:h-[560px]
-          lg:h-[720px]
-          flex
-          items-end
+          h-[300px] sm:h-[360px] md:h-[480px] lg:h-[720px]
+          flex items-start lg:items-end
           justify-center
-          overflow-visible
-          -mt-4 sm:mt-0
+          mt-1 lg:mt-0
+          z-10
         "
       >
-        <div className="absolute bottom-4 sm:bottom-8 lg:bottom-10 h-32 w-[240px] sm:h-44 sm:w-[300px] lg:h-40 lg:w-[390px] rounded-full bg-black blur-2xl" />
+        <div className="absolute bottom-4 sm:bottom-8 lg:bottom-10 h-32 w-[240px] sm:h-44 sm:w-[300px] lg:h-40 lg:w-[390px] rounded-full bg-black/40 blur-3xl z-20" />
+
+        {/* Green Chilli decoration - left side */}
+        <Image
+          src="/images/green-chilli.png"
+          alt=""
+          width={100}
+          height={100}
+          className="
+            absolute pointer-events-none select-none z-30
+            w-12 sm:w-16 lg:w-24
+            -left-2 sm:left-0 lg:-left-4
+            top-1/3 sm:top-1/4 lg:top-1/3
+            -rotate-45
+            drop-shadow-lg
+          "
+        />
+
+        {/* Green Chilli decoration - right side */}
+        <Image
+          src="/images/green-chilli.png"
+          alt=""
+          width={80}
+          height={80}
+          className="
+            absolute pointer-events-none select-none z-30
+            w-10 sm:w-14 lg:w-20
+            -right-1 sm:right-2 lg:right-0
+            bottom-1/4 sm:bottom-1/3 lg:bottom-1/4
+            rotate-[135deg]
+            drop-shadow-lg
+          "
+        />
 
         <Image
-          src="/images/biryani.png"
+          src="/images/Thali.png"
           alt="Biryani"
           fill
-          className="object-cover object-[50%_85%] lg:object-[40%_100%]"
+          className="object-contain object-center lg:scale-105 scale-105 z-10"
         />
       </div>
+
+      {/* Bottom gradient fade to blend with next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 lg:h-48 bg-linear-to-t from-pink-100 via-pink-100/80 to-transparent pointer-events-none z-0" />
     </section>
   );
 }

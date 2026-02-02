@@ -62,34 +62,34 @@ export default function ContactPage() {
       <main className="mx-auto max-w-5xl px-4 pb-14 pt-6 sm:px-6">
         <SectionWrapper>
           <div className="rounded-[28px] bg-white p-6 shadow-soft">
-            <h1 className="display text-4xl font-extrabold text-brown">
+            <h1 className="display text-4xl font-extrabold text-black">
               Visit us or say hello
             </h1>
-            <p className="mt-2 text-brown/70">
+            <p className="mt-2 text-black/70">
               We love hosting coffee dates, birthdays, and study jams.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label>Address</Label>
-                <p className="rounded-2xl bg-amber-50 p-3 text-brown">
+                <p className="rounded-2xl bg-amber-50 p-3 text-black">
                   Bakehouse Café, 21st Street, Jubilee Hills, Hyderabad
                 </p>
               </div>
               <div className="space-y-2">
                 <Label>Call us</Label>
-                <p className="rounded-2xl bg-amber-50 p-3 text-brown">
+                <p className="rounded-2xl bg-amber-50 p-3 text-black">
                   +91 88888 88888
                 </p>
               </div>
               <div className="space-y-2">
                 <Label>Email</Label>
-                <p className="rounded-2xl bg-amber-50 p-3 text-brown">
+                <p className="rounded-2xl bg-amber-50 p-3 text-black">
                   hello@bakehousecafe.com
                 </p>
               </div>
               <div className="space-y-2">
                 <Label>Opening hours</Label>
-                <p className="rounded-2xl bg-amber-50 p-3 text-brown">
+                <p className="rounded-2xl bg-amber-50 p-3 text-black">
                   Daily: 8:00 AM – 11:00 PM
                 </p>
               </div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   value={form.message}
                 onChange={handleChange}
                 placeholder="Share your query or event details..."
-                className="h-32 w-full rounded-2xl border border-brown/15 bg-amber-50 p-3 text-sm text-brown outline-none focus:border-brown focus:shadow-soft"
+                className="h-32 w-full rounded-2xl border border-brown/15 bg-amber-50 p-3 text-sm text-black outline-none focus:border-brown focus:shadow-soft"
               />
               {errors.message ? (
                 <p className="text-xs font-medium text-red-600">{errors.message}</p>
@@ -170,7 +170,7 @@ export default function ContactPage() {
             <div className="sm:col-span-2">
               <Button
                 type="submit"
-                className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+                className="w-full rounded-full bg-orange text-black shadow-chip hover:bg-orange/90"
                 disabled={!form.name || !form.phone || !form.message}
               >
                 Send on WhatsApp

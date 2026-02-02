@@ -66,10 +66,10 @@ export default function ReservePage() {
       <main className="mx-auto flex max-w-5xl flex-col gap-6 px-4 pb-14 pt-6 sm:px-6">
         <div className="grid gap-6 rounded-[28px] bg-white p-6 shadow-soft md:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
-            <h1 className="display text-4xl font-extrabold text-brown">
+            <h1 className="display text-4xl font-extrabold text-black">
               Reserve a table
             </h1>
-            <p className="text-brown/70">
+            <p className="text-black/70">
               Book your cozy corner. We’ll confirm instantly over WhatsApp.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -161,11 +161,11 @@ export default function ReservePage() {
                 value={form.notes}
                 onChange={handleChange}
                 placeholder="Allergies, celebrations, seating preference..."
-                className="h-28 w-full rounded-2xl border border-brown/15 bg-amber-50 p-3 text-sm text-brown outline-none ring-0 focus:border-brown focus:shadow-soft"
+                className="h-28 w-full rounded-2xl border border-brown/15 bg-amber-50 p-3 text-sm text-black outline-none ring-0 focus:border-brown focus:shadow-soft"
               />
             </div>
             <Button
-              className="w-full rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90"
+              className="w-full rounded-full bg-orange text-black shadow-chip hover:bg-orange/90"
               onClick={handleSend}
               disabled={!form.name || !form.phone || !form.date || !form.time}
             >

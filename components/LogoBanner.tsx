@@ -54,7 +54,7 @@
 //                   className="flex-shrink-0 transition-all duration-500 hover:scale-110 hover:-translate-y-2"
 //                 >
 //                   <div className="bg-white rounded-2xl px-8 lg:px-12 py-4 lg:py-5 shadow-lg hover:shadow-2xl border-2 border-brown/20">
-//                     <span className="text-2xl lg:text-3xl font-bold text-brown whitespace-nowrap">
+//                     <span className="text-2xl lg:text-3xl font-bold text-black whitespace-nowrap">
 //                       {logo.name}
 //                     </span>
 //                   </div>
@@ -73,7 +73,7 @@
 //                   className="flex-shrink-0 transition-all duration-300 hover:scale-110 hover:-translate-y-2"
 //                 >
 //                   <div className="bg-white rounded-2xl px-8 lg:px-12 py-4 lg:py-5 shadow-lg hover:shadow-2xl border-2 border-brown/20">
-//                     <span className="text-2xl lg:text-3xl font-bold text-brown whitespace-nowrap">
+//                     <span className="text-2xl lg:text-3xl font-bold text-black whitespace-nowrap">
 //                       {logo.name}
 //                     </span>
 //                   </div>
@@ -163,7 +163,7 @@ export default function LogoBanner() {
                     className="shrink-0 transition-all duration-300 hover:scale-110 hover:-translate-y-2"
                   >
                     <div className="bg-white rounded-2xl px-8 lg:px-12 py-4 lg:py-5 shadow-lg hover:shadow-2xl border-2 border-brown/20">
-                      <span className="text-2xl lg:text-3xl font-bold text-brown whitespace-nowrap">
+                      <span className="text-2xl lg:text-3xl font-bold text-black whitespace-nowrap">
                         {logo.name}
                       </span>
                     </div>
@@ -185,7 +185,7 @@ export default function LogoBanner() {
                     className="shrink-0 transition-all duration-300 hover:scale-110 hover:-translate-y-2"
                   >
                     <div className="bg-white rounded-2xl px-8 lg:px-12 py-4 lg:py-5 shadow-lg hover:shadow-2xl border-2 border-brown/20">
-                      <span className="text-2xl lg:text-3xl font-bold text-brown whitespace-nowrap">
+                      <span className="text-2xl lg:text-3xl font-bold text-black whitespace-nowrap">
                         {logo.name}
                       </span>
                     </div>

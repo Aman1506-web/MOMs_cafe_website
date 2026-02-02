@@ -41,10 +41,10 @@ export function CategoryPills({ categories, variant = "filled", onSelect }: Prop
               variant === "filled"
                 ? active
                   ? "bg-brown text-amber-100"
-                  : "bg-white text-brown hover:bg-amber-50"
+                  : "bg-white text-black hover:bg-amber-50"
                 : active
-                  ? "bg-amber-100 text-brown"
-                  : "border border-brown/15 bg-cream text-brown hover:bg-amber-50"
+                  ? "bg-amber-100 text-black"
+                  : "border border-brown/15 bg-cream text-black hover:bg-amber-50"
             )}
           >
             {cat.label}

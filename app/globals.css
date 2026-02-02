@@ -5,31 +5,42 @@
 
 :root {
   --radius: 1.75rem;
-  --color-cream: #fff5e6;
-  --color-brown: #3b2416;
-  --color-yellow: #ffd44d;
-  --color-orange: #ff8a4a;
-  --color-teal: #46c4b8;
-  --color-berry: #f48fb1;
-  --color-sky: #d7efff;
+
+  /* ========== CLIENT BRAND COLORS ========== */
+  --color-pink: #eda6c4;           /* Primary - CTAs, highlights */
+  --color-pale-yellow: #fdffce;    /* Background - Page bg */
+  --color-sky-blue: #89cff0;       /* Secondary - Buttons, accents */
+
+  /* ========== NEUTRAL COLORS ========== */
+  --color-brown: #3b2416;          /* Brand brown */
+  --color-black: #000000;          /* Text color */
+  --color-white: #ffffff;          /* Cards, surfaces */
+
+  /* ========== DERIVED COLORS (for compatibility) ========== */
+  --color-cream: var(--color-pale-yellow);
+  --color-yellow: var(--color-pale-yellow);
+  --color-orange: var(--color-pink);
+  --color-teal: var(--color-sky-blue);
+  --color-berry: var(--color-pink);
+  --color-sky: var(--color-sky-blue);
 }
 
 @theme inline {
-  --color-background: var(--color-cream);
-  --color-foreground: var(--color-brown);
-  --color-primary: var(--color-orange);
-  --color-primary-foreground: #2b160c;
-  --color-secondary: var(--color-yellow);
-  --color-secondary-foreground: #2b160c;
-  --color-accent: var(--color-teal);
-  --color-accent-foreground: #0f3f39;
-  --color-muted: #f7e2c8;
-  --color-muted-foreground: #4a2f1d;
-  --color-card: #ffffff;
-  --color-card-foreground: var(--color-brown);
-  --color-border: #f1d9b8;
-  --color-input: #f8e7d1;
-  --color-ring: var(--color-orange);
+  --color-background: var(--color-pale-yellow);
+  --color-foreground: var(--color-black);
+  --color-primary: var(--color-pink);
+  --color-primary-foreground: var(--color-black);
+  --color-secondary: var(--color-sky-blue);
+  --color-secondary-foreground: var(--color-black);
+  --color-accent: var(--color-sky-blue);
+  --color-accent-foreground: var(--color-black);
+  --color-muted: #fef9e7;
+  --color-muted-foreground: var(--color-black);
+  --color-card: var(--color-white);
+  --color-card-foreground: var(--color-black);
+  --color-border: #e8d4c8;
+  --color-input: var(--color-white);
+  --color-ring: var(--color-pink);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 0.5rem);
   --radius-2xl: calc(var(--radius) + 1rem);
@@ -38,8 +49,8 @@
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-brown);
+  background: var(--color-pale-yellow);
+  color: var(--color-black);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
@@ -91,13 +102,37 @@ body {
   background: var(--color-teal);
 }
 
-.text-brown {
-  color: var(--color-brown);
+.bg-pink {
+  background: var(--color-pink);
+}
+
+.bg-pale-yellow {
+  background: var(--color-pale-yellow);
+}
+
+.bg-sky-blue {
+  background: var(--color-sky-blue);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.text-pink {
+  color: var(--color-pink);
+}
+
+.text-sky-blue {
+  color: var(--color-sky-blue);
 }
 
 .display {
   font-family: var(--font-display), "Baloo 2", system-ui, sans-serif;
   letter-spacing: -0.01em;
+}
+
+.font-manbow {
+  font-family: var(--font-manbow), sans-serif;
 }
 
 .shadow-soft {
@@ -403,4 +438,17 @@ body.cart-visible #tidio-chat,
 body.cart-visible #tidio-chat-iframe,
 body.cart-visible iframe[src*="tidio.co"] {
   bottom: 75px !important; /* Cart ke upar */
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 18s linear infinite;
 }

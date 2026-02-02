@@ -30,18 +30,18 @@ export function CartBottomBar() {
   return (
     <div className="fixed bottom-4 left-0 right-0 z-40 flex justify-center md:hidden">
       <CartDrawer
-        triggerClassName="w-[90%] max-w-md justify-between bg-brown text-amber-100 px-5 py-3 text-base hover:-translate-y-0 shadow-soft border-none"
+        triggerClassName="w-[90%] max-w-md justify-between bg-pink text-black px-5 py-3 text-base hover:-translate-y-0 shadow-soft border-2 border-brown/30"
         triggerContent={
           <>
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-brown shadow-chip">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-chip">
                 {count}
               </span>
               <div className="flex flex-col leading-tight">
                 <span className="text-sm font-semibold">
                   {count} item{count === 1 ? "" : "s"}
                 </span>
-                <span className="text-xs text-amber-100/80">₹{total}</span>
+                <span className="text-xs text-black/80">₹{total}</span>
               </div>
             </div>
             <span className="font-semibold">View Cart →</span>

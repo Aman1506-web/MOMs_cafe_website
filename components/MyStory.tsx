@@ -74,9 +74,9 @@ export default function MyStory() {
       {/* ========== HEADING (z-10) ========== */}
       <div className="relative z-10 lg:mb-14 mb-1 py-8 text-center">
         <h2 className="display text-4xl sm:text-5xl lg:text-6xl font-bold">
-          Our <span className="text-yellow-500">Story</span>
+          Our <span className="text-pink">Story</span>
         </h2>
-        <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-yellow-400" />
+        <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-pink" />
       </div>
 
       {/* ========== CONTENT GRID (z-10) ========== */}
@@ -109,7 +109,7 @@ export default function MyStory() {
 
         {/* TEXT & BUTTONS */}
         <div className="flex flex-col gap-6">
-          <p className="text-sm uppercase tracking-widest text-yellow-600 font-semibold">
+          <p className="text-sm uppercase tracking-widest text-pink font-semibold">
             Our Journey
           </p>
 
@@ -125,13 +125,13 @@ export default function MyStory() {
           </p>
 
           <div className="mt-4 flex items-center gap-6">
-            <Button className="rounded-full lg:text-xl text-lg bg-yellow px-6 py-3 text-brown font-bold hover:shadow-lg cursor-pointer border-2 border-brown/70">
+            <Button className="rounded-full lg:text-xl text-lg bg-pink px-6 py-3 text-black font-bold hover:shadow-lg hover:bg-pink/90 cursor-pointer border-2 border-brown/50">
               <Link href={"/reserve"}>Reserve Table</Link>
             </Button>
 
             <Link
               href="/about"
-              className="flex items-center gap-1 text-lg lg:text-xl font-bold text-brown hover:underline underline-offset-4"
+              className="flex items-center gap-1 text-lg lg:text-xl font-bold text-black hover:underline underline-offset-4"
             >
               <span className="leading-none">Read More</span>
               <ChevronRight className="h-4 w-4" />

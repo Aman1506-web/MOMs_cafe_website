@@ -56,11 +56,11 @@ export default function GoogleReviews() {
 
 
   return (
-    <section className="py-15 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-15 lg:py-20 bg-gradient-to-b from-pink/20 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Heading */}
-        <h2 className="text-center display text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-12 lg:mb-16">
-          What Our <span className="text-yellow-400"> Customers</span> Say
+        <h2 className="text-center display text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-12 lg:mb-16">
+          What Our <span className="text-pink"> Customers</span> Say
         </h2>
 
         {/* Google Reviews Header */}
@@ -104,7 +104,7 @@ export default function GoogleReviews() {
     href="https://g.page/r/YOUR_GOOGLE_PLACE_ID/review"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-full font-semibold text-sm sm:text-base lg:text-lg transition-all hover:shadow-xl"
+    className="flex-shrink-0 inline-flex items-center gap-2 bg-pink hover:bg-pink/90 text-black px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-full font-semibold text-sm sm:text-base lg:text-lg transition-all hover:shadow-xl border-2 border-brown/30"
   >
     Review us on Google
   </a>
@@ -157,7 +157,7 @@ export default function GoogleReviews() {
                 </p>
 
                 {/* Read more */}
-                <button className="text-blue-600 font-semibold text-sm mt-3 hover:underline">
+                <button className="text-pink font-semibold text-sm mt-3 hover:underline">
                   Read more
                 </button>
               </div>
@@ -214,7 +214,7 @@ export default function GoogleReviews() {
                       </p>
 
                       {/* Read more */}
-                      <button className="text-blue-600 font-semibold text-sm mt-3 hover:underline">
+                      <button className="text-pink font-semibold text-sm mt-3 hover:underline">
                         Read more
                       </button>
                     </div>
@@ -236,7 +236,7 @@ export default function GoogleReviews() {
 
             <button
               onClick={nextSlide}
-              className="absolute right-2 -bottom-16 bg-gray-800 hover:bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors shadow-lg z-10"
+              className="absolute right-2 -bottom-16 bg-pink hover:bg-pink/90 text-black w-12 h-12 rounded-full flex items-center justify-center transition-colors shadow-lg z-10"
               aria-label="Next review"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,7 +251,7 @@ export default function GoogleReviews() {
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
                   className={`h-2 rounded-full transition-all ${
-                    idx === currentSlide ? "w-8 bg-gray-800" : "w-2 bg-gray-300"
+                    idx === currentSlide ? "w-8 bg-pink" : "w-2 bg-gray-300"
                   }`}
                   aria-label={`Go to review ${idx + 1}`}
                 />

@@ -11,40 +11,40 @@ import { useCartStore } from "@/lib/cart-store";
 -----------------------------------*/
 const categories = [
   {
-    label: "Pizza",
+    label: "Veg Lunch",
     href: "/menu?category=hand-tossed",
-    bg: "bg-yellow-200",
-    text: "text-brown",
+    bg: "bg-pink",
+    text: "text-black",
   },
   {
-    label: "Burger",
+    label: "Veg Dinner",
     href: "/menu?category=burger",
-    bg: "bg-orange-200",
-    text: "text-brown",
+    bg: "bg-sky-blue",
+    text: "text-black",
   },
   {
-    label: "Pasta",
+    label: "Non Veg Lunch",
     href: "/menu?category=pasta",
-    bg: "bg-amber-100",
-    text: "text-brown",
+    bg: "bg-pink/70",
+    text: "text-black",
   },
   {
-    label: "Coffee",
+    label: "Non Veg Dinner",
     href: "/menu?category=cold-coffee",
-    bg: "bg-stone-200",
-    text: "text-brown",
+    bg: "bg-sky-blue/70",
+    text: "text-black",
   },
   {
-    label: "Dessert",
+    label: "Weekly plans",
     href: "/menu?category=cakes",
-    bg: "bg-pink-200",
-    text: "text-brown",
+    bg: "bg-pink",
+    text: "text-black",
   },
   {
-    label: "Snacks",
+    label: "Monthly plans",
     href: "/menu?category=snacks",
-    bg: "bg-violet-200",
-    text: "text-brown",
+    bg: "bg-sky-blue",
+    text: "text-black",
   },
 ];
 
@@ -54,27 +54,27 @@ const categories = [
 const products = [
   {
     id: "1",
-    name: "Classic Cheeseburger",
+    name: "Veg Lunch Thali",
     price: "₹249",
-    image: "/images/burger.png",
+    image: "/images/thali.png",
   },
   {
     id: "2",
-    name: "Margherita Pizza",
+    name: "Non-Veg Lunch Thali",
     price: "₹399",
-    image: "/images/pizza.jpg",
+    image: "/images/thali.png",
   },
   {
     id: "3",
-    name: "Creamy Alfredo Pasta",
+    name: "Veg Dinner Thali",
     price: "₹349",
-    image: "/images/pasta.jpg",
+    image: "/images/thali.png",
   },
   {
     id: "4",
-    name: "Caramel Cold Coffee",
+    name: "Non-Veg Dinner Thali",
     price: "₹199",
-    image: "/images/coffee.jpg",
+    image: "/images/thali.png",
   },
 ];
 
@@ -141,10 +141,10 @@ export default function ProductsDaily() {
         {/* ---------- HEADING ---------- */}
         <div className="max-w-2xl">
           <h2 className="display text-4xl lg:text-5xl font-bold leading-tight">
-            Products we bake
+            Food we make
             <br />
-            <span className="text-brown">
-              here <span className="text-yellow-500">daily</span>
+            <span className="text-black">
+              here <span className="text-pink-300">daily</span>
             </span>{" "}
             —
           </h2>
@@ -176,10 +176,10 @@ export default function ProductsDaily() {
                 border-2 border-brown/70
                 display
                 /* MOBILE */
-        px-4 py-2 text-base
+        px-2 py-2 text-xs
 
         /* DESKTOP */
-        lg:px-8 lg:py-3 lg:text-lg
+        lg:px-5 lg:py-3 lg:text-lg
                 font-bold
                 text-center
                 transition
@@ -222,6 +222,8 @@ export default function ProductsDaily() {
     bg-white
     shadow-md
     overflow-hidden
+    cursor-pointer
+    transition-transform duration-300 hover:scale-105
 
     /* MOBILE */
     min-w-[260px]
@@ -238,19 +240,19 @@ export default function ProductsDaily() {
                   src={p.image}
                   alt={p.name}
                   fill
-                  className="object-contain p-1"
+                  className="object-contain p-1 scale-120"
                 />
               </div>
 
               <div className="px-6 pt-4">
-                <p className="display text-xl font-bold text-brown">{p.name}</p>
+                <p className="display text-xl font-bold text-black">{p.name}</p>
                 <p className="mt-1 text-gray-600 font-semibold">{p.price}</p>
               </div>
             </CardContent>
 
             <CardFooter className="px-5 pb-3 pt-3">
               <Button
-                className="w-full display text-lg rounded-full border-2 border-brown/70 bg-yellow text-brown font-bold hover:shadow-lg"
+                className="w-full display text-lg rounded-full border border-orange-600/50 bg-orange-500 text-white font-bold hover:shadow-lg hover:bg-orange-600 cursor-pointer"
                 onClick={() => handleAddToCart(p)}
               >
                 Add to Cart

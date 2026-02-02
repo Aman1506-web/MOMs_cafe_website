@@ -42,10 +42,10 @@ export function MenuClient() {
       <div className="rounded-[28px] bg-white p-5 shadow-soft sm:p-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>
-            <h1 className="display text-3xl font-extrabold text-brown sm:text-4xl">
+            <h1 className="display text-3xl font-extrabold text-black sm:text-4xl">
               Menu
             </h1>
-            <p className="mt-2 text-brown/70">
+            <p className="mt-2 text-black/70">
               Pick your favorites and send the order directly via WhatsApp.
             </p>
           </div>
@@ -70,7 +70,7 @@ export function MenuClient() {
           <ProductCard key={item.id} item={item} />
         ))}
         {filtered.length === 0 ? (
-          <div className="rounded-2xl bg-white p-6 text-brown shadow-soft">
+          <div className="rounded-2xl bg-white p-6 text-black shadow-soft">
             Nothing found. Try another category or search term.
           </div>
         ) : null}
@@ -83,7 +83,7 @@ export function MenuClient() {
             triggerContent={
               <>
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-brown shadow-chip">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 text-black shadow-chip">
                     {count}
                   </span>
                   <div className="flex flex-col leading-tight">

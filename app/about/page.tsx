@@ -16,24 +16,24 @@ export default function AboutPage() {
         <SectionWrapper>
           <div className="grid gap-6 rounded-[28px] bg-white p-6 shadow-soft md:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-4">
-              <Badge className="rounded-full bg-yellow text-brown shadow-chip">
+              <Badge className="rounded-full bg-yellow text-black shadow-chip">
                 Our story
               </Badge>
-              <h1 className="display text-4xl font-extrabold text-brown">
+              <h1 className="display text-4xl font-extrabold text-black">
                 Warm bakes, bold coffee, playful colors.
               </h1>
-              <p className="text-brown/70">
+              <p className="text-black/70">
                 Bakehouse Café is our love letter to neighborhood bakeries and
                 vibrant street cafés. We hand-fold croissants, roast our beans
                 in-house, and use cultured butter in every batch.
               </p>
-              <p className="text-brown/70">
+              <p className="text-black/70">
                 The vibe? Creamy walls, chocolate accents, and sprinkles of
                 teal. Bring friends, co-work with a latte, or grab a pretzel on
                 the go.
               </p>
               <Link href="/menu">
-                <Button className="rounded-full bg-orange text-brown shadow-chip hover:bg-orange/90">
+                <Button className="rounded-full bg-orange text-black shadow-chip hover:bg-orange/90">
                   View menu
                 </Button>
               </Link>
