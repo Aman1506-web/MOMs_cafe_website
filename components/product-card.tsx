@@ -2,7 +2,6 @@
 
 import { MenuItem } from "@/lib/menu-data";
 import { useCartStore } from "@/lib/cart-store";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
@@ -17,38 +16,45 @@ export function ProductCard({ item }: Props) {
     useCartStore((s) => s.items.find((i) => i.id === item.id)?.quantity) || 0;
 
   return (
-    <div className="flex flex-col gap-3 rounded-3xl bg-white p-4 shadow-soft transition hover:-translate-y-1 hover:bg-pink/10 sm:p-5">
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <h3 className="display text-lg font-bold text-black sm:text-xl">{item.name}</h3>
-          {item.description ? (
-            <p className="text-sm text-black/70">{item.description}</p>
+    <div className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 shadow-soft transition hover:shadow-chip sm:px-5 sm:py-4">
+      {/* Left: item info */}
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2">
+          <h3 className="truncate text-sm font-bold text-black sm:text-base">
+            {item.name}
+          </h3>
+          {item.badge ? (
+            <Badge className="shrink-0 rounded-full bg-sky-blue px-2 py-0 text-[10px] text-black shadow-none">
+              {item.badge}
+            </Badge>
           ) : null}
         </div>
-        {item.badge ? (
-          <Badge className="rounded-full bg-sky-blue text-black shadow-chip">
-            {item.badge}
-          </Badge>
+        {item.description ? (
+          <p className="mt-0.5 truncate text-xs text-black/50">
+            {item.description}
+          </p>
         ) : null}
-      </div>
-      <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-        <div className="display text-2xl font-extrabold text-black">
+        <p className="mt-1 text-sm font-extrabold text-black sm:text-base">
           ₹{item.price}
-        </div>
+        </p>
+      </div>
+
+      {/* Right: ADD button or quantity stepper */}
+      <div className="shrink-0">
         {quantity > 0 ? (
-          <div className="flex items-center gap-2 rounded-full bg-pink/30 px-3 py-1 shadow-chip">
+          <div className="flex items-center gap-1 rounded-lg border border-[#3b2416]/20 bg-white">
             <button
-              className="grid h-8 w-8 place-items-center rounded-full bg-white text-black shadow-soft"
+              className="grid h-8 w-8 place-items-center rounded-l-lg text-sm font-bold text-[#3b2416] transition hover:bg-[#3b2416]/5"
               onClick={() => decreaseQty(item.id)}
               aria-label="Decrease quantity"
             >
-              -
+              −
             </button>
-            <span className="min-w-[24px] text-center font-semibold text-black">
+            <span className="min-w-7 text-center text-sm font-bold text-[#3b2416]">
               {quantity}
             </span>
             <button
-              className="grid h-8 w-8 place-items-center rounded-full bg-pink text-black shadow-soft"
+              className="grid h-8 w-8 place-items-center rounded-r-lg text-sm font-bold text-[#3b2416] transition hover:bg-[#3b2416]/5"
               onClick={() => increaseQty(item.id)}
               aria-label="Increase quantity"
             >
@@ -56,8 +62,8 @@ export function ProductCard({ item }: Props) {
             </button>
           </div>
         ) : (
-          <Button
-            className="w-full rounded-full bg-pink text-black shadow-chip hover:bg-pink/90 sm:w-auto"
+          <button
+            className="rounded-lg border border-[#3b2416]/20 bg-white px-5 py-1.5 text-sm font-bold uppercase tracking-wide text-[#3b2416] transition hover:bg-[#3b2416]/5"
             onClick={() =>
               addItem({
                 id: item.id,
@@ -67,8 +73,8 @@ export function ProductCard({ item }: Props) {
               })
             }
           >
-            Add to cart
-          </Button>
+            ADD
+          </button>
         )}
       </div>
     </div>

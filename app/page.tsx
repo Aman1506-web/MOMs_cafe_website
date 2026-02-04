@@ -23,7 +23,7 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowLoader(false), 1000);
+    const timer = setTimeout(() => setShowLoader(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 

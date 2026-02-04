@@ -12,37 +12,37 @@ import { useCartStore } from "@/lib/cart-store";
 const categories = [
   {
     label: "Veg Lunch",
-    href: "/menu?category=hand-tossed",
+    href: "/menu?category=thali",
     bg: "bg-pink",
     text: "text-black",
   },
   {
     label: "Veg Dinner",
-    href: "/menu?category=burger",
+    href: "/menu?category=main-course-veg",
     bg: "bg-sky-blue",
     text: "text-black",
   },
   {
     label: "Non Veg Lunch",
-    href: "/menu?category=pasta",
+    href: "/menu?category=main-course-non-veg",
     bg: "bg-pink/70",
     text: "text-black",
   },
   {
     label: "Non Veg Dinner",
-    href: "/menu?category=cold-coffee",
+    href: "/menu?category=non-veg-starters",
     bg: "bg-sky-blue/70",
     text: "text-black",
   },
   {
     label: "Weekly plans",
-    href: "/menu?category=cakes",
+    href: "/menu?category=rice-bowls",
     bg: "bg-pink",
     text: "text-black",
   },
   {
     label: "Monthly plans",
-    href: "/menu?category=snacks",
+    href: "/menu?category=breads",
     bg: "bg-sky-blue",
     text: "text-black",
   },

@@ -26,14 +26,18 @@ const links = [
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const [scrolled, setScrolled] = useState(false);
+  const isHome = pathname === "/";
+  const [scrolledPastBanner, setScrolledPastBanner] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 12);
+    if (!isHome) return;
+    const handler = () => setScrolledPastBanner(window.scrollY > 12);
     handler();
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [isHome]);
+
+  const scrolled = !isHome || scrolledPastBanner;
 
   return (
     <header
@@ -55,32 +59,80 @@ export function Navbar() {
                 <Menu className="size-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-72 bg-white p-4 shadow-soft">
+            <SheetContent side="left" className="flex w-72 flex-col bg-white p-0 shadow-soft">
               <SheetHeader className="sr-only">
                 <SheetTitle>Navigation</SheetTitle>
               </SheetHeader>
-              <div className="mb-4">
-                <p className="display text-lg font-bold text-black">
-                  Bakehouse Café
-                </p>
-                <p className="text-xs text-black/70">
-                  Fresh bakes, coffee & bites
-                </p>
+
+              {/* Logo header */}
+              <div className="flex items-center gap-3 border-b border-black/5 px-5 pb-4 pr-12 pt-4">
+                <Link href="/" className="flex items-center">
+                  <span className="font-manbow text-4xl text-pink">M</span>
+                  <span className="relative flex h-8 w-8 items-center justify-center">
+                    <Image
+                      src="/logo/mom-child.png"
+                      alt="Ministry of Masala"
+                      width={32}
+                      height={32}
+                      className="absolute z-0 h-5 w-5 object-contain"
+                    />
+                    <span className="absolute inset-0 z-10 flex items-center justify-center font-manbow text-4xl text-pink">
+                      O
+                    </span>
+                  </span>
+                  <span className="font-manbow text-4xl text-pink">M</span>
+                </Link>
+                <div className="min-w-0">
+                  <p className="display text-sm font-bold text-[#3b2416]">
+                    Ministry of Masala
+                  </p>
+                  <p className="text-[11px] text-black/40">
+                    Ghar jaisa khana
+                  </p>
+                </div>
               </div>
-              <nav className="flex flex-col gap-2">
+
+              {/* Nav links */}
+              <nav className="flex flex-col gap-1 px-3 py-4">
                 {links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "rounded-xl px-3 py-2 text-sm font-semibold text-black transition hover:bg-pink/30",
-                      pathname === link.href ? "bg-pink" : ""
+                      "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-black/80 transition",
+                      pathname === link.href
+                        ? "bg-[#3b2416] text-amber-100 shadow-chip"
+                        : "hover:bg-black/5"
                     )}
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
+
+              {/* Cafe sketch illustration */}
+              <div className="relative flex flex-1 flex-col items-end justify-end overflow-hidden">
+                <Image
+                  src="/decor/cafe-sketch.png"
+                  alt="Cafe sketch"
+                  width={300}
+                  height={600}
+                  className="-mr-4 -mb-6 w-72 scale-y-125 opacity-10"
+                />
+                <p className="absolute bottom-5 left-5 text-[10px] font-medium tracking-wider text-black/20">
+                  EST. 2025 · NEW DELHI
+                </p>
+              </div>
+
+              {/* Bottom CTA */}
+              <div className="border-t border-black/5 px-5 py-4">
+                <Link
+                  href="/menu"
+                  className="block w-full rounded-full bg-orange-500 py-2.5 text-center text-sm font-bold text-white shadow-chip transition hover:bg-orange-600"
+                >
+                  Order Now →
+                </Link>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

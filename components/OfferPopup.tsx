@@ -35,7 +35,7 @@ export default function OfferPopup() {
   };
 
   const handleOfferClick = () => {
-    router.push("/menu?category=burger");
+    router.push("/menu?category=non-veg-starters");
     setIsVisible(false);
   };
 
