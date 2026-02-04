@@ -9,11 +9,11 @@ const quickLinks = [
 ];
 
 const menuLinks = [
-  { href: "/menu?category=biryani", label: "Biryani" },
-  { href: "/menu?category=starters", label: "Starters" },
-  { href: "/menu?category=main-course", label: "Main Course" },
-  { href: "/menu?category=desserts", label: "Desserts" },
-  { href: "/menu?category=beverages", label: "Beverages" },
+  { href: "/menu?category=non-veg-starters", label: "Non-Veg Starters" },
+  { href: "/menu?category=veg-starters", label: "Veg Starters" },
+  { href: "/menu?category=main-course-non-veg", label: "Main Course" },
+  { href: "/menu?category=breads", label: "Breads" },
+  { href: "/menu?category=dessert", label: "Dessert" },
 ];
 
 const legalLinks = [
@@ -203,6 +203,20 @@ export function Footer() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Made by Quiotech */}
+      <div className="border-t border-white/5 py-3 text-center text-xs" style={{ color: "white" }}>
+        Made with ❤️ by{" "}
+        <a
+          href="https://www.quiotech.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold transition-colors hover:opacity-80"
+          style={{ color: "white" }}
+        >
+          Quiotech
+        </a>
       </div>
     </footer>
   );

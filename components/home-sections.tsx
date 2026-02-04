@@ -109,11 +109,11 @@ export function FeaturedBakes() {
 
 export function CravingPills() {
   const pills = [
-    { label: "Pizza", href: "/menu?category=pizza" },
-    { label: "Pasta", href: "/menu?category=pasta" },
-    { label: "Burgers", href: "/menu?category=burgers" },
-    { label: "Momos", href: "/menu?category=momos" },
-    { label: "Drinks", href: "/menu?category=drinks" },
+    { label: "Starters", href: "/menu?category=non-veg-starters" },
+    { label: "Rolls", href: "/menu?category=rolls" },
+    { label: "Thali", href: "/menu?category=thali" },
+    { label: "Rice Bowls", href: "/menu?category=rice-bowls" },
+    { label: "Breads", href: "/menu?category=breads" },
   ];
   return (
     <SectionWrapper className="mt-6">
