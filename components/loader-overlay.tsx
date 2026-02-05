@@ -14,7 +14,7 @@ export function LoaderOverlay() {
             alt="Mom's Cafe"
             width={56}
             height={56}
-            className="absolute z-0 h-6 w-6 object-contain sm:h-8 sm:w-8"
+            className="absolute z-0 h-4 w-4 object-contain sm:h-5 sm:w-5 translate-x-[30%] translate-y-[5%] scale-y-[1.4]"
           />
           <span className="absolute inset-0 z-10 flex items-center justify-center font-manbow text-5xl text-pink sm:text-6xl">
             O

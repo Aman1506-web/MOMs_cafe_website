@@ -40,7 +40,7 @@ export function Footer() {
                 alt="Mom's Cafe"
                 width={128}
                 height={128}
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-24 lg:h-24 object-contain absolute z-0"
+                className="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-14 lg:h-14 object-contain absolute z-0 translate-x-[30%] translate-y-[5%] scale-y-[1.25]"
               />
               <span className="font-manbow text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] absolute inset-0 flex items-center justify-center z-10" style={{ color: "#eda6c4" }}>
                 O

@@ -1,35 +1,49 @@
-// heroSlides.ts
-export const heroSlides = [
+export type HeroSlide = {
+  line1Word1: string;
+  line1Rest: string;
+  line2Start: string;
+  line2Highlight: string;
+  description: string;
+  image: string;
+  imageClassName?: string;
+};
+
+export const heroSlides: HeroSlide[] = [
   {
-    title: "Burger",
-    heading: ["Everything", "is better", "with a"],
+    line1Word1: "Ghar",
+    line1Rest: "Jaisa Khana",
+    line2Start: "Rozana",
+    line2Highlight: "Lunch & Dinner",
     description:
-      "Burger is the missing piece that makes every day complete, a simple yet delicious joy in life",
-    image: "/images/burger.png",
-    imagePosition: "10% 110%",
+      "Homestyle cooking that reminds you of mom's kitchen. No preservatives, just pure love on a plate.",
+    image: "/images/Thali.png",
   },
   {
-    title: "Pizza",
-    heading: ["Happiness", "is a slice", "of"],
+    line1Word1: "Sizzling",
+    line1Rest: "Hot & Smoky",
+    line2Start: "Classic",
+    line2Highlight: "Paneer Tikka",
     description:
-      "Hot, cheesy, and loaded with flavors that bring instant comfort.",
-    image: "/images/pizza2.png",
-    imagePosition: "10% 110%",
+      "Golden, smoky paneer marinated in aromatic spices. A vegetarian delight straight from the tandoor.",
+    image: "/images/paneer-tikka.png",
   },
   {
-    title: "Milkshake",
-    heading: ["Life", "is sweeter", "with a"],
+    line1Word1: "Crispy",
+    line1Rest: "& Juicy",
+    line2Start: "Spicy",
+    line2Highlight: "Roasted Wings",
     description:
-      "Rich, creamy shakes that turn moments into memories.",
-    image: "/images/chocolateShake.png",
-    imagePosition: "10% 110%",
+      "Perfectly roasted chicken wings with a crispy crust and juicy center. Finger-licking good!",
+    image: "/images/roasted-wings.png",
   },
   {
-    title: "Sushi",
-    heading: ["Freshness", "served", "as"],
+    line1Word1: "Dum",
+    line1Rest: "Pukht Style",
+    line2Start: "Aromatic",
+    line2Highlight: "Biryani",
     description:
-      "Delicate, precise, and crafted to perfection.",
-    image: "/images/sushi1.png",
-    imagePosition: "10% 110%",
+      "Slow-cooked layers of fragrant rice and tender meat. Every bite tells a story of tradition.",
+    image: "/images/biryani.png",
+    imageClassName: "scale-115 lg:scale-[1.2]",
   },
-]
+];
