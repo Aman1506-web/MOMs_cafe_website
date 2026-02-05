@@ -4,12 +4,34 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { heroSlides } from "@/lib/heroSlides";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const SLIDE_INTERVAL = 3500; // ms
+const FADE_DURATION = 500; // ms
+
+/** Café is open 8 AM – 1 AM (next day), closed all day Tuesday. */
+function getCafeStatus(): { isOpen: boolean; label: string } {
+  const now = new Date();
+  const day = now.getDay(); // 0 = Sun, 2 = Tue
+  const hour = now.getHours();
+
+  // Tuesday — closed all day
+  if (day === 2) return { isOpen: false, label: "Closed today · Opens Wednesday 8 AM" };
+
+  // Open from 8:00 to 00:59 (1 AM next day)
+  const isOpen = hour >= 8 || hour < 1;
+
+  if (isOpen) return { isOpen: true, label: "Open now · Taking orders" };
+
+  // Between 1 AM and 8 AM
+  return { isOpen: false, label: "Closed now · Opens at 8 AM" };
+}
 
 export default function HeroCarousel() {
   const router = useRouter();
@@ -17,9 +39,67 @@ export default function HeroCarousel() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const burgerRef = useRef<HTMLDivElement>(null);
-  const sketchRef = useRef<HTMLImageElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [cafeStatus, setCafeStatus] = useState(getCafeStatus);
+
+  const slide = heroSlides[activeIndex];
+
+  // Transition to a given slide index with fade
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (index === activeIndex || isFading) return;
+      setIsFading(true);
+      setTimeout(() => {
+        setActiveIndex(index);
+        setIsFading(false);
+      }, FADE_DURATION);
+    },
+    [activeIndex, isFading]
+  );
+
+  // Refresh cafe status every minute
+  useEffect(() => {
+    const id = setInterval(() => setCafeStatus(getCafeStatus()), 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Auto-rotation
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setActiveIndex((prev) => (prev + 1) % heroSlides.length);
+        setIsFading(false);
+      }, FADE_DURATION);
+    }, SLIDE_INTERVAL);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  // Reset interval when user clicks a dot
+  const handleDotClick = useCallback(
+    (index: number) => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      goToSlide(index);
+      // Restart auto-rotation
+      intervalRef.current = setInterval(() => {
+        setIsFading(true);
+        setTimeout(() => {
+          setActiveIndex((prev) => (prev + 1) % heroSlides.length);
+          setIsFading(false);
+        }, FADE_DURATION);
+      }, SLIDE_INTERVAL);
+    },
+    [goToSlide]
+  );
+
+  // Entrance animations (run once on mount)
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -57,7 +137,7 @@ export default function HeroCarousel() {
       );
 
       tl.from(
-        burgerRef.current,
+        imageContainerRef.current,
         {
           scale: 0.92,
           opacity: 0,
@@ -70,11 +150,16 @@ export default function HeroCarousel() {
     { scope: sectionRef }
   );
 
+  const fadeStyle = {
+    opacity: isFading ? 0 : 1,
+    transition: `opacity ${FADE_DURATION}ms ease-in-out`,
+  };
+
   return (
     <section
       ref={sectionRef}
       className="
-        relative
+        relative overflow-x-clip
         grid grid-cols-1 lg:grid-cols-2
         items-start lg:items-center
         gap-4 lg:gap-10
@@ -89,9 +174,8 @@ export default function HeroCarousel() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Decorative Sketch */}
+      {/* Decorative Sketch — right side */}
       <img
-        ref={sketchRef}
         src="/decor/cafe-sketch.png"
         alt=""
         className="
@@ -102,9 +186,25 @@ export default function HeroCarousel() {
         "
       />
 
+      {/* Decorative Coffee Cup — left side behind text */}
+      <img
+        src="/decor/coffee-cup.png"
+        alt=""
+        className="
+          pointer-events-none select-none absolute z-0
+          w-[140px] opacity-[0.12] rotate-[18deg]
+          -left-6 top-[22%]
+          sm:w-[180px] sm:-left-8 sm:top-[20%]
+          lg:w-[280px] lg:opacity-[0.10] lg:rotate-[22deg]
+          lg:-left-10 lg:top-auto lg:bottom-[5%]
+          drop-shadow-sm
+        "
+      />
+
       {/* TEXT CONTENT */}
       <div
         className="
+          order-1 lg:order-0
           relative z-10
           flex flex-col
           items-center text-center
@@ -113,41 +213,53 @@ export default function HeroCarousel() {
           lg:pl-12
         "
       >
-        {/* Tagline badge */}
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-orange-200 shadow-sm">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500"></span>
+        {/* Live status badge */}
+        <span
+          className={`
+            inline-flex items-center gap-1.5
+            px-2.5 py-1 sm:px-3.5 sm:py-1.5 lg:px-4 lg:py-1.5
+            rounded-full backdrop-blur-sm shadow-sm border
+            ${cafeStatus.isOpen
+              ? "bg-green-50/90 border-green-300"
+              : "bg-red-50/90 border-red-300"
+            }
+          `}
+        >
+          <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+            {cafeStatus.isOpen && (
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+            )}
+            <span className={`relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 ${cafeStatus.isOpen ? "bg-green-500" : "bg-red-400"}`}></span>
           </span>
-          <span className="text-[9px] sm:text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Fresh meals delivered daily</span>
+          <span className={`text-[9px] sm:text-[10px] lg:text-xs font-semibold uppercase tracking-wider ${cafeStatus.isOpen ? "text-green-800" : "text-red-700"}`}>
+            {cafeStatus.label}
+          </span>
         </span>
 
+        {/* Dynamic heading — fades with slide */}
         <h1
           ref={headingRef}
-          className="display font-bold leading-[1.1] text-2xl sm:text-5xl lg:text-7xl"
+          className="display font-bold leading-[1.1] text-2xl sm:text-5xl lg:text-6xl lg:whitespace-nowrap"
+          style={fadeStyle}
         >
           <span className="inline-block">
-            <span className="relative">
-              Ghar
-              <svg className="absolute -bottom-1 left-0 w-full h-1.5 sm:h-2 text-orange-400/60" viewBox="0 0 100 12" preserveAspectRatio="none">
-                <path d="M0,8 Q25,0 50,8 T100,8" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
-              </svg>
-            </span>
-            {" "}Jaisa Khana
+            <span>{slide.line1Word1}</span>
+            {" "}{slide.line1Rest}
           </span>
           <br />
-          <span className="inline-block mt-1 sm:mt-2">
-            Rozana{" "}
-            <span className="text-orange-500">Lunch & Dinner</span>
+          <span className="inline-block mt-1 sm:mt-2 lg:mt-0">
+            {slide.line2Start}{" "}
+            <span className="text-orange-500">{slide.line2Highlight}</span>
           </span>
         </h1>
 
+        {/* Dynamic description — fades with slide */}
         <p
           ref={descRef}
           className="display text-gray-600 text-xs sm:text-lg lg:text-xl max-w-xs sm:max-w-md lg:max-w-lg leading-relaxed"
+          style={fadeStyle}
         >
-          Homestyle cooking that reminds you of mom&apos;s kitchen.
-          <span className="hidden sm:inline"> No preservatives, just pure love on a plate.</span>
+          {slide.description}
         </p>
 
         {/* Veg / Non-Veg pricing cards */}
@@ -238,12 +350,14 @@ export default function HeroCarousel() {
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
+
       </div>
 
       {/* IMAGE CONTENT */}
       <div
-        ref={burgerRef}
+        ref={imageContainerRef}
         className="
+          order-3 lg:order-0
           relative
           w-full
           h-[300px] sm:h-[360px] md:h-[480px] lg:h-[720px]
@@ -256,7 +370,7 @@ export default function HeroCarousel() {
         <div className="absolute bottom-4 sm:bottom-8 lg:bottom-10 h-32 w-[240px] sm:h-44 sm:w-[300px] lg:h-40 lg:w-[390px] rounded-full bg-black/40 blur-3xl z-20" />
 
         {/* Green Chilli decoration - left side */}
-        <Image
+        {/* <Image
           src="/images/green-chilli.png"
           alt=""
           width={100}
@@ -269,10 +383,10 @@ export default function HeroCarousel() {
             -rotate-45
             drop-shadow-lg
           "
-        />
+        /> */}
 
         {/* Green Chilli decoration - right side */}
-        <Image
+        {/* <Image
           src="/images/green-chilli.png"
           alt=""
           width={80}
@@ -285,14 +399,36 @@ export default function HeroCarousel() {
             rotate-[135deg]
             drop-shadow-lg
           "
-        />
+        /> */}
 
-        <Image
-          src="/images/Thali.png"
-          alt="Biryani"
-          fill
-          className="object-contain object-center lg:scale-105 scale-105 z-10"
-        />
+        {/* Dynamic food image — fades with slide */}
+        <div className="absolute inset-0 z-10" style={fadeStyle}>
+          <Image
+            src={slide.image}
+            alt={slide.line2Highlight}
+            fill
+            className={`object-contain object-center lg:scale-105 scale-105 ${slide.imageClassName ?? ""}`}
+          />
+        </div>
+      </div>
+
+      {/* Carousel indicator dots — inline on mobile, absolute bottom-center on desktop */}
+      <div className="order-2 lg:order-0 flex items-center justify-center gap-2 mt-3 sm:mt-4 lg:absolute lg:bottom-16 lg:left-1/2 lg:-translate-x-1/2 lg:mt-0 lg:z-20">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={`
+              rounded-full transition-all duration-300
+              ${
+                index === activeIndex
+                  ? "w-6 h-2 sm:w-8 sm:h-3 bg-orange-500"
+                  : "w-2 h-2 sm:w-3 sm:h-3 bg-gray-300 hover:bg-gray-400"
+              }
+            `}
+          />
+        ))}
       </div>
 
       {/* Bottom gradient fade to blend with next section */}

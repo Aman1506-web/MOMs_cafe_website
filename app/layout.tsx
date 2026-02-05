@@ -3,6 +3,7 @@ import { Baloo_2, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CartBottomBar } from "@/components/cart-bottom-bar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import OfferPopup from "@/components/OfferPopup";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
         <Analytics />
         <OfferPopup />
         <CartBottomBar />
+        <WhatsAppButton />
       </body>
     </html>
   );

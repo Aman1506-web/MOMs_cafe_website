@@ -11,37 +11,37 @@ import { useCartStore } from "@/lib/cart-store";
 -----------------------------------*/
 const categories = [
   {
-    label: "Veg Lunch",
-    href: "/menu?category=thali",
+    label: "Starters",
+    href: "/menu?category=non-veg-starters",
     bg: "bg-pink",
     text: "text-black",
   },
   {
-    label: "Veg Dinner",
-    href: "/menu?category=main-course-veg",
+    label: "Thali",
+    href: "/menu?category=thali",
     bg: "bg-sky-blue",
     text: "text-black",
   },
   {
-    label: "Non Veg Lunch",
-    href: "/menu?category=main-course-non-veg",
+    label: "Rolls",
+    href: "/menu?category=rolls",
     bg: "bg-pink/70",
     text: "text-black",
   },
   {
-    label: "Non Veg Dinner",
-    href: "/menu?category=non-veg-starters",
+    label: "Biryani",
+    href: "/menu?category=main-course-non-veg",
     bg: "bg-sky-blue/70",
     text: "text-black",
   },
   {
-    label: "Weekly plans",
+    label: "Bowls",
     href: "/menu?category=rice-bowls",
     bg: "bg-pink",
     text: "text-black",
   },
   {
-    label: "Monthly plans",
+    label: "Breads",
     href: "/menu?category=breads",
     bg: "bg-sky-blue",
     text: "text-black",
@@ -54,27 +54,35 @@ const categories = [
 const products = [
   {
     id: "1",
-    name: "Veg Lunch Thali",
+    name: "Lunch & Dinner Thali",
+    description:
+      "Homestyle cooking that reminds you of mom's kitchen. No preservatives, just pure love on a plate.",
     price: "₹249",
-    image: "/images/thali.png",
+    image: "/images/Thali.png",
   },
   {
     id: "2",
-    name: "Non-Veg Lunch Thali",
+    name: "Paneer Tikka",
+    description:
+      "Golden, smoky paneer marinated in aromatic spices. A vegetarian delight straight from the tandoor.",
     price: "₹399",
-    image: "/images/thali.png",
+    image: "/images/paneer-tikka.png",
   },
   {
     id: "3",
-    name: "Veg Dinner Thali",
+    name: "Roasted Wings",
+    description:
+      "Perfectly roasted chicken wings with a crispy crust and juicy center. Finger-licking good!",
     price: "₹349",
-    image: "/images/thali.png",
+    image: "/images/roasted-wings.png",
   },
   {
     id: "4",
-    name: "Non-Veg Dinner Thali",
+    name: "Dum Biryani",
+    description:
+      "Slow-cooked layers of fragrant rice and tender meat. Every bite tells a story of tradition.",
     price: "₹199",
-    image: "/images/thali.png",
+    image: "/images/biryani.png",
   },
 ];
 
@@ -144,7 +152,7 @@ export default function ProductsDaily() {
             Food we make
             <br />
             <span className="text-black">
-              here <span className="text-pink-300">daily</span>
+              here <span className="text-orange-500">daily</span>
             </span>{" "}
             —
           </h2>
@@ -159,10 +167,10 @@ export default function ProductsDaily() {
         <div
           className="
             grid
-            grid-cols-3 
+            grid-cols-3
             lg:grid-cols-3
-            gap-4
-            max-w-xl
+            gap-2 lg:gap-4
+            max-w-md lg:max-w-xl
             pb-3
           "
         >
@@ -172,16 +180,18 @@ export default function ProductsDaily() {
               href={c.href}
               className={`
                 ${c.bg} ${c.text}
+                w-full
                 rounded-full
                 border-2 border-brown/70
                 display
                 /* MOBILE */
-        px-2 py-2 text-xs
+        px-3 py-1.5 text-sm
 
         /* DESKTOP */
         lg:px-5 lg:py-3 lg:text-lg
                 font-bold
                 text-center
+                whitespace-nowrap
                 transition
                 hover:scale-[1.03]
                 hover:shadow-md
@@ -217,7 +227,7 @@ export default function ProductsDaily() {
             key={p.id}
             className="
             relative
-    rounded-3xl
+    rounded-2xl lg:rounded-3xl
     border-2
     bg-white
     shadow-md
@@ -226,33 +236,34 @@ export default function ProductsDaily() {
     transition-transform duration-300 hover:scale-105
 
     /* MOBILE */
-    min-w-[260px]
+    min-w-[200px] max-w-[220px]
     shrink-0
     snap-start
 
     /* DESKTOP */
-    lg:min-w-0
+    lg:min-w-0 lg:max-w-none
   "
           >
             <CardContent className="p-0">
-              <div className="relative h-[180px] w-full lg:h-[220px]">
+              <div className="relative h-40 w-full lg:h-[220px] bg-orange-50/60 lg:bg-transparent">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  className="object-contain p-1 scale-120"
+                  className="object-contain scale-125 lg:scale-120 lg:p-1"
                 />
               </div>
 
-              <div className="px-6 pt-4">
-                <p className="display text-xl font-bold text-black">{p.name}</p>
-                <p className="mt-1 text-gray-600 font-semibold">{p.price}</p>
+              <div className="px-3 pt-2 pb-1 lg:px-6 lg:pt-4 lg:pb-0">
+                <p className="display text-sm lg:text-xl font-bold text-black">{p.name}</p>
+                <p className="mt-0.5 lg:mt-1 text-gray-500 text-[10px] lg:text-sm leading-snug line-clamp-2">{p.description}</p>
+                <p className="mt-0.5 lg:mt-2 text-gray-700 text-sm lg:text-base font-semibold">{p.price}</p>
               </div>
             </CardContent>
 
-            <CardFooter className="px-5 pb-3 pt-3">
+            <CardFooter className="px-3 pb-2.5 pt-2 lg:px-5 lg:pb-3 lg:pt-3">
               <Button
-                className="w-full display text-lg rounded-full border border-orange-600/50 bg-orange-500 text-white font-bold hover:shadow-lg hover:bg-orange-600 cursor-pointer"
+                className="w-full display text-sm lg:text-lg rounded-full border border-orange-600/50 bg-orange-500 text-white font-bold hover:shadow-lg hover:bg-orange-600 cursor-pointer"
                 onClick={() => handleAddToCart(p)}
               >
                 Add to Cart

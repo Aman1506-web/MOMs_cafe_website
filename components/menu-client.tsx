@@ -115,13 +115,20 @@ export function MenuClient() {
     });
   };
 
+  const isSearching = search.trim().length > 0;
+
   const filtered = useMemo(() => {
     return menuItems.filter((item) => {
-      const matchCategory = item.category === selected;
       const matchSearch = item.name
         .toLowerCase()
-        .includes(search.toLowerCase());
-      if (!matchCategory || !matchSearch) return false;
+        .includes(search.toLowerCase().trim());
+
+      // When searching, ignore category — search globally
+      if (isSearching) {
+        if (!matchSearch) return false;
+      } else {
+        if (item.category !== selected) return false;
+      }
 
       // Apply active filters on top
       if (activeFilters.has("veg") && !isVegItem(item)) return false;
@@ -131,7 +138,7 @@ export function MenuClient() {
 
       return true;
     });
-  }, [selected, search, activeFilters]);
+  }, [selected, search, isSearching, activeFilters]);
 
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pb-28 pt-20 sm:px-6 md:gap-5 md:pt-24">

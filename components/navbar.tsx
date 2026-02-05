@@ -18,6 +18,7 @@ import Image from "next/image";
 
 const links = [
   { href: "/menu", label: "Menu" },
+  { href: "/weekly-menu", label: "Weekly Menu" },
   { href: "/reserve", label: "Reserve Table" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
@@ -74,7 +75,7 @@ export function Navbar() {
                       alt="Ministry of Masala"
                       width={32}
                       height={32}
-                      className="absolute z-0 h-5 w-5 object-contain"
+                      className="absolute z-0 h-3.5 w-3.5 object-contain translate-x-[30%] translate-y-[5%] scale-y-[1.4]"
                     />
                     <span className="absolute inset-0 z-10 flex items-center justify-center font-manbow text-4xl text-pink">
                       O
@@ -147,7 +148,7 @@ export function Navbar() {
               alt="Mom's Cafe"
               width={56}
               height={56}
-              className="w-6 h-6 sm:w-6 sm:h-6 lg:w-8 lg:h-8 object-contain absolute z-0"
+              className="w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5 object-contain absolute z-0 translate-x-[30%] translate-y-[5%] scale-y-[1.4]"
             />
             <span className="font-manbow text-5xl sm:text-5xl lg:text-6xl absolute inset-0 flex items-center justify-center z-10 text-pink">
               O
