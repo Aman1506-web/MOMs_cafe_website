@@ -74,6 +74,17 @@ body {
   }
 }
 
+.animate-marquee-slow {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .animate-marquee-slow {
+    animation-duration: 25s;
+  }
+}
+
 .bg-cream {
   background: var(--color-cream);
 }

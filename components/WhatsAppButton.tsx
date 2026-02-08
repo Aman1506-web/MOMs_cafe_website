@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-const WHATSAPP_NUMBER = "919999999999"; // replace with actual number
-const WHATSAPP_MESSAGE = "Hi! I'd like to place an order from MOMs Cafe.";
+const WHATSAPP_NUMBER = "919810317722";
+const WHATSAPP_MESSAGE = "Hi! I'd like to place an order from Ministry Of Masala.";
 
 export default function WhatsAppButton() {
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;

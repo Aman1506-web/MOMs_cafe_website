@@ -19,7 +19,6 @@ import Image from "next/image";
 const links = [
   { href: "/menu", label: "Menu" },
   { href: "/weekly-menu", label: "Weekly Menu" },
-  { href: "/reserve", label: "Reserve Table" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
@@ -49,7 +48,7 @@ export function Navbar() {
           : "top-9 bg-white/70 backdrop-blur-sm"
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2.5 sm:px-5 md:px-6 md:py-3 lg:py-1">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 sm:px-5 md:px-8 md:py-3 lg:px-12 lg:py-1">
         <div className="flex items-center gap-2 md:hidden">
           <Sheet>
             <SheetTrigger asChild>
@@ -168,11 +167,7 @@ export function Navbar() {
                 "rounded-full px-4 py-2 transition",
                 pathname === link.href
                   ? "bg-pink text-black shadow-chip"
-                  : "hover:bg-pink/30",
-                // Special styling for Reserve Table link
-                link.href === "/reserve" && pathname !== link.href
-                  ? "bg-sky-blue hover:bg-sky-blue/90 border border-brown/30"
-                  : ""
+                  : "hover:bg-pink/30"
               )}
             >
               {link.label}
