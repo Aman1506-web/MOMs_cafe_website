@@ -6,6 +6,7 @@ import { CartBottomBar } from "@/components/cart-bottom-bar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import OfferPopup from "@/components/OfferPopup";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { RestaurantJsonLd } from "@/components/structured-data";
 
 const baloo = Baloo_2({
@@ -127,6 +128,7 @@ export default function RootLayout({
         <OfferPopup />
         <CartBottomBar />
         <WhatsAppButton />
+      <GoogleAnalytics gaId="G-4WTPJNRN0V" />
       </body>
     </html>
   );
